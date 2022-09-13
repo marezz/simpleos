@@ -1,0 +1,15 @@
+url(http://localhost:8080/img/filters.7152ada1.svg#protanopia) grayscale(0) !important
+
+url(http://localhost:8080/img/filters.7152ada1.svg#protanomaly) grayscale(0) !important
+
+url(http://localhost:8080/img/filters.7152ada1.svg#deuteranopia) grayscale(0) !important
+
+url(http://localhost:8080/img/filters.7152ada1.svg#deuteranomaly) grayscale(0) !important
+
+url(http://localhost:8080/img/filters.7152ada1.svg#tritanomaly) grayscale(0) !important
+
+url(http://localhost:8080/img/filters.7152ada1.svg#tritanopia) grayscale(0) !important
+
+url(http://localhost:8080/img/filters.7152ada1.svg#achromatopsia) grayscale(0) !important
+
+url(http://localhost:8080/img/filters.7152ada1.svg#achromatomaly) grayscale(0) !important
