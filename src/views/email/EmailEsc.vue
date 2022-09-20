@@ -63,7 +63,6 @@
 
 <script>
 import emailjs from '@emailjs/browser';
-import * as email from './index.js';
 
 export default {
     name: 'Email_Esc',
@@ -84,9 +83,6 @@ export default {
                         alert("Ocorreu um erro, tente novamente.")
                         console.log('FAILED...', error.text);
                     });  
-            },
-            TesteMail(){
-                email.authorize().then(email.listLabels()).catch(console.error);
             }
     },
     created() {
