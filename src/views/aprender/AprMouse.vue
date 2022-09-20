@@ -81,7 +81,7 @@
             </defs>
         </svg>
 
-        <section class="menu">
+        <section id = "menu" class="menu">
             <div>
                 <img id="tri" src="../../assets/aprender/tri.png" height="2" width="2" style="display: none;">
                 <img id="circ" src="../../assets/aprender/circ.png" height="2" width="2" style="display: none;">
@@ -90,7 +90,9 @@
                 <img id="estr" src="../../assets/aprender/estr.png" height="2" width="2" style="display: none;">
 
                 <canvas id="trencherCanvas" height="600" width="800"></canvas>
-                <button title="Tentar Novamente">
+                <span>Jogar</span>
+                <span>Tempo:</span>
+                <button @click="reset()" title="Tentar Novamente">
                     <div class="material-symbols-outlined" style="font-size: 2em; font-weight: bold;">
                         refresh
                     </div>
@@ -115,6 +117,9 @@ export default {
     mounted() {
         var canvas = document.getElementById('trencherCanvas');
         var canvasContext = canvas.getContext('2d');
+
+        canvas.width = document.getElementById("menu").offsetWidth/1.05
+        canvas.height = document.getElementById("menu").offsetHeight/1.05
 
         var life = 10;
         var tempo = 0;
@@ -176,10 +181,10 @@ export default {
         }
 
         window.onload = function () {
-            var fps = 60;
+            var fps = 15;
             setInterval(function () {
                 if (!pause) {
-                    tempo += 1 / 60;
+                    tempo += 1 / fps;
                 }
                 draw();
                 if (life == 0) {
@@ -250,12 +255,13 @@ export default {
 
         function draw() {
             canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+            //drawing.rectWithColor(0, 0, canvas.width, canvas.height,"white");
             if (!pause) {
                 canvasContext.drawImage(formas[0].id, formas[0].x, formas[0].y, formas[0].w, formas[0].h);
             } else {
                 drawing.rectWithColor(canvas.width / 2, canvas.height / 2 - 25, 200, 50, "red");
-                drawing.text("20px Arial", "Tente Novamente", canvas.width / 2 + 25, canvas.height / 2, "black");
-                drawing.text("30px Arial", convertSecond(tempo).m + ":" + convertSecond(tempo).s + ":" + convertSecond(tempo).ms + "", 100, 100, "blue");
+                drawing.text("20px Advent Pro", "Tente Novamente", canvas.width / 2 + 25, canvas.height / 2, "white");
+                drawing.text("30px Advent Pro", convertSecond(tempo).m + ":" + convertSecond(tempo).s + ":" + convertSecond(tempo).ms + "", 100, 100, "white");
             }
         }
 
@@ -279,7 +285,32 @@ export default {
     margin-top: -1vh;
 }
 
+
+
 canvas {
-    margin: 0 auto;
+    margin: 2vh;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+}
+
+button {
+    color: white !important;
+	padding: 1%;
+	position: absolute;
+	z-index: 2;
+	bottom: 1vh;
+	right: 12vw;
+	background-color: #0041e4de;
+	border: none;
+	border-radius: 100px;
+	&:hover {
+		background-color: #2673d8;
+		box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+	}
+}
+
+span{
+    position: absolute;
+
 }
 </style>
