@@ -284,4 +284,29 @@ input[type=color]::-webkit-color-swatch {
 .canvas {
   cursor: url('brush.png'), auto;
 }
+
+//maior que 1200
+@media only screen and (min-width: 1200px),
+(min-height:800px) {
+  .canvas {
+    transform: scale(1);
+  }
+}
+
+
+// menor que 1200
+@media only screen and (max-width: 1200px),
+(max-height:800px) {
+  .canvas {
+    transform: scale(0.75);
+  }
+}
+
+//menor que 800
+@media only screen and (max-width: 800px),
+(max-height:600px) {
+  .canvas {
+    transform: scale(0.5);
+  }
+}
 </style>
