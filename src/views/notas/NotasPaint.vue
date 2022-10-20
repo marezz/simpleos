@@ -44,6 +44,7 @@ export default {
         window.localStorage.getItem("vue-drawing-canvas")
       );
     }
+
   },
   methods: {
     async setImage(event) {
@@ -83,6 +84,35 @@ export default {
       window.localStorage.removeItem("vue-drawing-canvas");
       alert("Strokes cleared from local storage");
     },
+    floodFill() {
+
+    },
+    baixar() {
+
+      let canvasImage = document.getElementById('canvas').toDataURL('image/png');
+      var inicio = document.getElementById('titulo').value;
+      var titulo = '';
+      if (!inicio) {
+        titulo = "desenho.png"
+      }else{
+        titulo = document.getElementById('titulo').value+"png";
+      }  
+
+      // this can be used to download any image from webpage to local disk
+      let xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function () {
+        let a = document.createElement('a');
+        a.href = window.URL.createObjectURL(xhr.response);
+        a.download = titulo;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      };
+      xhr.open('GET', canvasImage); // This is to download the canvas Image
+      xhr.send();
+    }
   },
   created() {
     document.getElementById("geral").href = "../geral.css";
@@ -214,16 +244,17 @@ export default {
   <div id="app" style="padding: 0%;">
     <div class="flex-row" style="padding: 0%;">
       <div class="source" style="padding: 0%;">
-        <vue-drawing-canvas class="canvas" ref="VueCanvasDrawing" v-model:image="image" :width="1200" :height="600"
-          :stroke-type="strokeType" :line-cap="lineCap" :line-join="lineJoin" :fill-shape="fillShape" :eraser="eraser"
-          :lineWidth="line" :color="color" :background-color="backgroundColor" :background-image="backgroundImage"
-          :watermark="watermark" :initial-image="initialImage" saveAs="png" :styles="{
+        <vue-drawing-canvas class="canvas" ref="VueCanvasDrawing" v-model:image="image" canvasId='canvas' :width="1200"
+          :height="600" :stroke-type="strokeType" :line-cap="lineCap" :line-join="lineJoin" :fill-shape="fillShape"
+          :eraser="eraser" :lineWidth="line" :color="color" :background-color="backgroundColor"
+          :background-image="backgroundImage" :watermark="watermark" :initial-image="initialImage" saveAs="png" :styles="{
             'border': 'solid 0px #000',
             'border-radius': '50px',
             'box-shadow': '0px 0px 25px rgba(0, 0, 0, 0.25)',
           }" :lock="disabled" @mousemove="getCoordinate($event)" :additional-images="additionalImages" />
         <br />
         <div class="button-container">
+          <label>Título</label><input type="text" id="titulo" />
           <input type="color" v-model="color" />
           <button type="button" @click.prevent="$refs.VueCanvasDrawing.undo()">
             Desfazer
@@ -234,6 +265,10 @@ export default {
           <button type="button" @click.prevent="$refs.VueCanvasDrawing.reset()">
             Resetar
           </button>
+          <button type="button" @click.prevent="baixar()">
+            Baixar
+          </button>
+          <!----input type="checkbox" v-model="eraser"/-->
         </div>
       </div>
     </div>

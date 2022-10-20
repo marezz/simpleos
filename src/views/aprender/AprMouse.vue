@@ -88,11 +88,12 @@
                 <img id="quad" src="../../assets/aprender/quad.png" height="2" width="2" style="display: none;">
                 <img id="pent" src="../../assets/aprender/pent.png" height="2" width="2" style="display: none;">
                 <img id="estr" src="../../assets/aprender/estr.png" height="2" width="2" style="display: none;">
-
+                <div style="position: absolute; top: 50%; display: flex; align-self: center;">
+                    <span id="tryagain">Jogar</span>
+                    <span id="tempo">Tempo:</span>
+                </div>
                 <canvas id="trencherCanvas" height="600" width="800"></canvas>
-                <span>Jogar</span>
-                <span>Tempo:</span>
-                <button @click="reset()" title="Tentar Novamente">
+                <button title="Tentar Novamente">
                     <div class="material-symbols-outlined" style="font-size: 2em; font-weight: bold;">
                         refresh
                     </div>
@@ -127,7 +128,8 @@ export default {
         var scalew = 100;
         var scaleh = 100;
 
-        var pause = false;
+        var pause = true;
+        var comecou = false;
 
         var mousePos;
 
@@ -140,32 +142,6 @@ export default {
             w: scalew,
             h: scaleh
         }];
-
-        var drawing = {
-            rectWithColor: function (rectX, rectY, rectW, rectH, rectColor) {
-                canvasContext.fillStyle = rectColor;
-                canvasContext.fillRect(rectX, rectY, rectW, rectH);
-            },
-            strokeWithColor: function (x1, y1, x2, y2, color) { //or (x1,y1,x2,y2,width,color)
-                canvasContext.strokeStyle = color;
-                //canvasContext.lineWidth = width;
-                canvasContext.moveTo(x1, y1);
-                canvasContext.lineTo(x2, y2);
-                canvasContext.stroke();
-            },
-            circleWithColor: function (centerX, centerY, radius, color) {
-                canvasContext.fillStyle = color;
-                canvasContext.beginPath();
-                canvasContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
-                canvasContext.fill();
-            },
-            text: function (font, msg, x, y, color) {
-                canvasContext.fillStyle = color;
-                canvasContext.font = font;
-                canvasContext.fillText(msg, x, y);
-            }
-
-        };
 
         function calculateMousePosition(evt) {
             var rect = canvas.getBoundingClientRect();
@@ -204,19 +180,17 @@ export default {
                             formas.pop();
                             spawnImage();
                         }
-                    } else {
-                        if (mousePos.x > canvas.width / 2 - 100 && mousePos.x < canvas.width / 2 + 100 && mousePos.y > canvas.height / 2 - 25 && mousePos.y < canvas.height / 2 + 25) {
-                            reset();
-                        }
                     }
                 });
         };
 
-        function reset() {
+        document.getElementById("tryagain").onclick = function() {
             life = 10
             tempo = 0
             pause = false
+            comecou = true
         }
+        document.getElementById("tempo").style.display = "none";
 
         function spawnImage() {
             var forma = {
@@ -258,10 +232,14 @@ export default {
             //drawing.rectWithColor(0, 0, canvas.width, canvas.height,"white");
             if (!pause) {
                 canvasContext.drawImage(formas[0].id, formas[0].x, formas[0].y, formas[0].w, formas[0].h);
+                document.getElementById("tempo").style.display = "none";
+                document.getElementById("tryagain").style.display = "none";
             } else {
-                drawing.rectWithColor(canvas.width / 2, canvas.height / 2 - 25, 200, 50, "red");
-                drawing.text("20px Advent Pro", "Tente Novamente", canvas.width / 2 + 25, canvas.height / 2, "white");
-                drawing.text("30px Advent Pro", convertSecond(tempo).m + ":" + convertSecond(tempo).s + ":" + convertSecond(tempo).ms + "", 100, 100, "white");
+                if(comecou){
+                    document.getElementById("tempo").innerHTML = "Tempo: "+ convertSecond(tempo).m + ":" + convertSecond(tempo).s + ":" + convertSecond(tempo).ms + "";
+                    document.getElementById("tempo").style.display = "block";
+                }
+                document.getElementById("tryagain").style.display = "block";
             }
         }
 
@@ -310,32 +288,8 @@ button {
 }
 
 span{
-    position: absolute;
+    position: relative;
+    margin-top: -5vh;
 
-}
-
-//maior que 1200
-@media only screen and (min-width: 1200px),
-(min-height:800px) {
-  canvas {
-    transform: scale(1);
-  }
-}
-
-
-// menor que 1200
-@media only screen and (max-width: 1200px),
-(max-height:800px) {
-  canvas {
-    transform: scale(0.75);
-  }
-}
-
-//menor que 800
-@media only screen and (max-width: 800px),
-(max-height:600px) {
-  canvas {
-    transform: scale(0.5);
-  }
 }
 </style>
