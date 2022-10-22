@@ -4,7 +4,7 @@
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,700,0,0" />
-        <h1 style="margin-top:-10vh;">Navegar a Internet</h1>
+        <h1 style="margin-top:-10vh;">Principais destinos</h1>
 
         <svg class="fundo" style="height: 364px;left: -5vh;bottom:-10vh;width: 65%" width="1020" height="376"
             viewBox="0 0 1020 600" fill="none" xmlns="http://www.w3.org/2000/svg">

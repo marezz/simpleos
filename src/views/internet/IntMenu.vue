@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 style="margin-top:-10vh;">Navegar a Internet</h1>
+        <h1 style="margin-top:-10vh;">Navegar na Internet</h1>
 
         <svg class="fundo" style="height: 364px;left: -5vh;bottom:-10vh;width: 65%" width="1020" height="376"
             viewBox="0 0 1020 600" fill="none" xmlns="http://www.w3.org/2000/svg">
