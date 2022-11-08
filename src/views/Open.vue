@@ -86,7 +86,7 @@
   </svg>
 
   <h1 style="font-weight:700;font-size:calc(var(--tamanhofonte)*4);margin-top: 1em;">Seja Bem-Vindo ao Simple OS</h1>
-  <h4 style="font-weight:500;font-size:calc(var(--tamanhofonte)*2);margin-top: -1em;">“A simplicidade é o mais alto grau de sofisticação”</h4>
+  <h4 style="font-weight:500;font-size:calc(var(--tamanhofonte)*2);margin-top: -1em;">Aqui seus problemas desaparecem</h4>
   <br />
   <router-link class="route" to="/home">Começar</router-link>
 </template>  
