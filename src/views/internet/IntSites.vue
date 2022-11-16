@@ -69,15 +69,7 @@
 
         <section class="menu">
             <br />
-            <div style="background-color: white; border-radius: 50px;max-width: 70%;margin: 0 auto; min-height: 2vh;">
-                <form autocomplete="off" action="https://www.google.com/search" class="searchform" method="get"
-                    name="searchform" target="_blank">
-                    <input class="form-control search" name="q" placeholder="Pesquisar" type="text">
-                    <button class="button" type="submit"><img
-                            src="https://img.icons8.com/glyph-neue/32/undefined/search--v1.png" /></button>
-                </form>
-
-            </div>
+            
 
             <ul>
                 <a href="https://google.com" target="_blank" class="link">

@@ -72,16 +72,24 @@
             keyboard_double_arrow_left
         </div>
 
+        <div style="background-color: white; border-radius: 50px;max-width: 70%;margin: 0 auto; min-height: 2vh; box-shadow:0px 0px 25px rgba(0, 0, 0, 0.2);">
+            <form autocomplete="off" action="https://www.google.com/search" class="searchform" method="get"
+                name="searchform" target="_blank">
+                <input class="form-control search" name="q" placeholder="Pesquisar" type="text"
+                    style="width:90%;margin: 1vh auto;">
+                <button class="button" type="submit"><img
+                        src="https://img.icons8.com/glyph-neue/32/undefined/search--v1.png" /></button>
+            </form>
+
+        </div>
+
         <div class="menu">
+
             <p id="marginLeft">&#8205;</p>
+
             <span>
                 <router-link to='/internet/pesq_imagens' class="link"><img
                         src="@/assets/internet/pimagem.png" /><br />Pesquisar por imagem
-                </router-link>
-            </span>
-            <span>
-                <router-link :to="{ path: '/internet/pesq_palavras' }" class="link"><img
-                        src="@/assets/internet/ppalavra.png" /><br />Pesquisar por palavras
                 </router-link>
             </span>
             <span>
@@ -150,6 +158,7 @@ span {
 }
 
 .menu {
+    margin: 5vh auto;
     span {
         &:hover {
             background-color: #ff9d00ba;
@@ -180,5 +189,28 @@ span {
         background-color: #ff9d00ba;
         top: 48vh;
     }
+}
+
+button {
+    border: none;
+    background: transparent;
+    position: relative;
+    border-radius: 10px;
+    bottom: -1vh;
+}
+
+button:hover {
+    background-color: rgba(180, 180, 180, 0.812);
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+}
+
+input {
+    font-size: var(--tamanhofonte);
+    text-align: center;
+    position: relative;
+    border: 0;
+    outline: none;
+    margin: 2vh;
+    width: 80%;
 }
 </style>
