@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, createWebHashHistory } from "vue-router"
+import { createRouter, createWebHistory } from "vue-router"
 import Open from '../views/Open.vue'
 
 const routes = [
@@ -26,7 +26,7 @@ const routes = [
 ]
 
 const router = new createRouter({
-    history: process.env.IS_ELECTRON ? createWebHashHistory() : createWebHistory(),
+    history: createWebHistory(process.env.BASE_URL),
     routes
 })
 

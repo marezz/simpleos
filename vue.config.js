@@ -1,17 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
-const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
-
 module.exports = defineConfig({
   transpileDependencies: true,
-  configureWebpack: {
-    plugins: [new NodePolyfillPlugin()],
-    optimization: {
-      splitChunks: {
-        chunks: "all",
-      },
-    },
-  }
 })
+<<<<<<< HEAD
 
 module.exports = {
   pluginOptions: {
@@ -53,3 +44,5 @@ module.exports = {
     }
   },
 }
+=======
+>>>>>>> parent of 82dd38a (leo vue)

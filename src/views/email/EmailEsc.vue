@@ -38,16 +38,14 @@
 
         <section class="menu">
             <div style="padding: 2vh;padding-left:3vh;text-align: left;">
-                <form>
-                    <h3>Para: <input type="email" style="min-width: 64.5vw;" /></h3>
-                    <h3>Título: <input type="text" /></h3>
-                    <textarea style="text-align: left;"></textarea>
-                    <link rel="stylesheet"
-                        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
-                    <button class="button" type="submit"><span class="material-symbols-outlined"
-                            style="background:none;margin:0;padding: 0;font-size: 4em;color: white;">
+                <form ref="form" @submit.prevent="EnviarEmail">
+                    <h3>Para: <input type="email" name="to_email" id="email_id" placeholder="nome@email.com" required style="min-width: 64.5vw;" /></h3>
+                    <h3>Título: <input type="text" name="subject" id="titulo_id" placeholder="Título" required/></h3>
+                    <textarea id="mensagem_id" name="message" style="text-align: left;" required></textarea>
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+                    <button class="button" type="submit" value="Enviar"><span class="material-symbols-outlined" style="background:none;margin:0;padding: 0;font-size: 4em;color: white;">
                             send
-                        </span></button>
+                    </span></button>
                 </form>
 
             </div>
@@ -70,23 +68,26 @@ import emailjs from '@emailjs/browser';
 export default {
     name: 'Email_Esc',
     methods: {
-        EnviarEmail() {
-            var templateParams = {
-                to_email: document.getElementById("email_id").value,
-                subject: document.getElementById("titulo_id").value,
-                message: document.getElementById("mensagem_id").value
-            }
+            EnviarEmail(){
+                var templateParams = {
+                    to_email: document.getElementById("email_id").value,
+                    subject: document.getElementById("titulo_id").value,
+                    message: document.getElementById("mensagem_id").value
+                }
 
-            emailjs.send('service_gmail', 'template_gmail', templateParams, 'SZ_HWbptxW2qQ7KVp')
-                .then((result) => {
-                    alert("Seu e-mail foi enviado com sucesso!");
-                    console.log('SUCCESS!', result.text);
-                    window.location.reload();
-                }, (error) => {
-                    alert("Ocorreu um erro, tente novamente.")
-                    console.log('FAILED...', error.text);
-                });
-        }
+                emailjs.send('service_gmail', 'template_gmail', templateParams, 'SZ_HWbptxW2qQ7KVp')
+                    .then((result) => {
+                        alert("Seu e-mail foi enviado com sucesso!");
+                        console.log('SUCCESS!', result.text);
+                        window.location.reload();
+                    }, (error) => {
+                        alert("Ocorreu um erro, tente novamente.")
+                        console.log('FAILED...', error.text);
+                    });  
+            },
+            TesteMail(){
+                email.authorize().then(email.listLabels()).catch(console.error);
+            }
     },
     created() {
         document.getElementById("geral").href = "../geral.css";
@@ -98,58 +99,54 @@ export default {
 
 <style scoped lang="scss">
 .menu {
-    background-color: #d53d3db4;
-    border-radius: 20px;
-    min-width: 70vw;
-    min-height: 80vh;
-    display: block;
-    margin-top: -1vh;
+	background-color: #d53d3db4;
+	border-radius: 20px;
+	min-width: 70vw;
+	min-height: 80vh;
+	display: block;
+	margin-top: -1vh;
 }
-
 input {
-    font-size: calc(var(--tamanhofonte)*0.75);
-    text-align: left;
-    position: relative;
-    padding-left: 1vw;
-    border: 0;
-    outline: none;
-    margin: 0 auto;
-    border-radius: 50px;
-    min-width: 63.75vw;
-    min-height: 4vh;
+	font-size: calc(var(--tamanhofonte)*0.75);
+	text-align: left;
+	position: relative;
+	padding-left: 1vw;
+	border: 0;
+	outline: none;
+	margin: 0 auto;
+	border-radius: 50px;
+	min-width: 63.75vw;
+	min-height: 4vh;
 }
-
 h3 {
-    margin: 1vh;
-    font-size: var(--tamanhofonte);
+	margin: 1vh;
+	font-size: var(--tamanhofonte);
 }
-
 textarea {
-    padding: 1%;
-    font-size: var(--tamanhofonte);
-    text-align: center;
-    position: relative;
-    border: 0;
-    outline: none;
-    margin: 0 auto;
-    border-radius: 20px;
-    min-width: 68vw;
-    min-height: 60vh;
+	padding: 1%;
+	font-size: var(--tamanhofonte);
+	text-align: center;
+	position: relative;
+	border: 0;
+	outline: none;
+	margin: 0 auto;
+	border-radius: 20px;
+	min-width: 68vw;
+	min-height: 60vh;
 }
-
 button {
-    padding: 1%;
-    position: absolute;
-    z-index: 2;
-    bottom: 1vh;
-    right: 12vw;
-    background-color: #d53d3d;
-    border: none;
-    border-radius: 100px;
-
-    &:hover {
-        background-color: #970d0d;
-        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
-    }
+	padding: 1%;
+	position: absolute;
+	z-index: 2;
+	bottom: 1vh;
+	right: 12vw;
+	background-color: #d53d3d;
+	border: none;
+	border-radius: 100px;
+	&:hover {
+		background-color: #970d0d;
+		box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+	}
 }
+
 </style>
