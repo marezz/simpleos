@@ -53,7 +53,6 @@
             </div>
         </router-link>
     </div>
-
 </template>
 
 <script>
@@ -88,7 +87,7 @@ span {
     }
 }
 
-ul{
+ul {
     position: relative;
     top: 25%;
 }
@@ -99,7 +98,7 @@ li {
     margin-top: 2vh;
 }
 
-input[type=range]{
+input[type=range] {
     -webkit-appearance: none;
 }
 
@@ -113,7 +112,7 @@ input[type="range"] {
 
 }
 
-input[type=range]::-webkit-slider-runnable-track{
+input[type=range]::-webkit-slider-runnable-track {
     border-radius: 100px;
     max-width: 97%;
     margin: 0 auto;
@@ -128,7 +127,7 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: ew-resize;
     border-radius: 100px;
 
-    &:hover{
+    &:hover {
         box-shadow: inset 0 0 0 5px black;
         background: white;
     }

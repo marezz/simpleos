@@ -86,7 +86,8 @@
   </svg>
 
   <h1 style="font-weight:700;font-size:calc(var(--tamanhofonte)*4);margin-top: 1em;">Seja Bem-Vindo ao Simple OS</h1>
-  <h4 style="font-weight:500;font-size:calc(var(--tamanhofonte)*2);margin-top: -1em;">A simplificação é o mais alto grau de sofisticação</h4>
+  <h4 style="font-weight:500;font-size:calc(var(--tamanhofonte)*2);margin-top: -1em;">A simplificação é o mais alto grau
+    de sofisticação</h4>
   <br />
   <router-link class="route" to="/home">Começar</router-link>
 </template>  
@@ -96,25 +97,25 @@ export default {
   name: 'Open_Page',
   methods:
     {}
-  
+
 }
 </script>
 
 <style scoped lang="scss">
 .route {
-	position: relative;
-	z-index: 3;
-	padding: 50px;
-	color: white;
-	background-color: rgba(0, 53, 44, 0.363);
-	text-decoration: none;
-	font-size: calc(var(--tamanhofonte)*1.5);
-	border-radius: 30px;
-	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-	&:hover {
-		font-size: calc(var(--tamanhofonte)*2);
-		background-color: rgba(24, 111, 97, 0.363);
-	}
-}
+  position: relative;
+  z-index: 3;
+  padding: 50px;
+  color: white;
+  background-color: rgba(0, 53, 44, 0.363);
+  text-decoration: none;
+  font-size: calc(var(--tamanhofonte)*1.5);
+  border-radius: 30px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
 
+  &:hover {
+    font-size: calc(var(--tamanhofonte)*2);
+    background-color: rgba(24, 111, 97, 0.363);
+  }
+}
 </style>
