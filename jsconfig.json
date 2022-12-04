@@ -8,7 +8,8 @@
     "paths": {
       "@/*": [
         "src/*"
-      ]
+      ],
+      "crypto": ["node_modules/crypto-browerify"],
     },
     "lib": [
       "esnext",

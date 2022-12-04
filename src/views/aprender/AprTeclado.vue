@@ -239,7 +239,7 @@
 
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
-        <router-link to="/home" class="quit" style="color: black;">
+        <router-link to="/aprender" class="quit" style="color: black;">
             <div class="material-symbols-outlined" style="font-size: 2em;">
                 keyboard_double_arrow_left
             </div>

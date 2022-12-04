@@ -1,16 +1,19 @@
+import * as config from "@/../vue.config";
+
 const fs = require('fs').promises;
 const path = require('path');
-const process = require('process');
+//const process = require('process');
 const {authenticate} = require('@google-cloud/local-auth');
 const {google} = require('googleapis');
+console.log("cwd: "+config.cwd);
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
-const TOKEN_PATH = path.join(process.cwd(), 'token.json');
-const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json');
+const TOKEN_PATH = path.join(config.cwd, 'token.json');
+const CREDENTIALS_PATH = path.join(config.cwd, 'credentials.json');
 
 /**
  * Reads previously authorized credentials from the save file.

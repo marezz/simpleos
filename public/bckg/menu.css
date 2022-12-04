@@ -2,7 +2,7 @@ html{
     background: linear-gradient(180deg, rgba(50, 196, 148, 0.35) 0%, rgba(76, 199, 172, 0.48) 100%);
 }
 
-svg {
+.fundo {
     transform: translatey(0px);
     animation: float 6s ease-in-out infinite;
 }

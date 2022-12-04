@@ -63,6 +63,26 @@
             </defs>
         </svg>
 
+        <svg class="pesquisa" width="1106" height="82" viewBox="0 0 1106 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1106" height="82" rx="41" fill="url(#paint0_linear_722_2)" />
+            <defs>
+                <linearGradient id="paint0_linear_722_2" x1="-34.084" y1="41" x2="1189.62" y2="41"
+                    gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D9D9D9" />
+                    <stop offset="0.0001" stop-color="#E43E2B" />
+                    <stop offset="0.244792" stop-color="#E43E2B" />
+                    <stop offset="0.244892" stop-color="#F0B501" />
+                    <stop offset="0.478897" stop-color="#F0B501" />
+                    <stop offset="0.478997" stop-color="#2BA24C" />
+                    <stop offset="0.713542" stop-color="#2BA24C" />
+                    <stop offset="0.713642" stop-color="#3B7DED" />
+                    <stop offset="1" stop-color="#3B7DED" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+
+
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,700,0,0" />
         <div @click="diminish($event)" class="material-symbols-rounded setasright">
@@ -72,7 +92,8 @@
             keyboard_double_arrow_left
         </div>
 
-        <div style="background-color: white; border-radius: 50px;max-width: 70%;margin: 0 auto; min-height: 2vh; box-shadow:0px 0px 25px rgba(0, 0, 0, 0.2);">
+        <div
+            style="background-color: white; border-radius: 50px;max-width: 70%;margin: 0 auto; min-height: 2vh; box-shadow:0px 0px 25px rgba(0, 0, 0, 0.2);">
             <form autocomplete="off" action="https://www.google.com/search" class="searchform" method="get"
                 name="searchform" target="_blank">
                 <input class="form-control search" name="q" placeholder="Pesquisar" type="text"
@@ -159,6 +180,7 @@ span {
 
 .menu {
     margin: 5vh auto;
+
     span {
         &:hover {
             background-color: #ff9d00ba;
@@ -212,5 +234,12 @@ input {
     outline: none;
     margin: 2vh;
     width: 80%;
+}
+
+.pesquisa {
+    position: relative;
+    margin-bottom: -7.5vh;
+    transform: scaleX(1.05) scaleY(0.9);
+    z-index: -1;
 }
 </style>
