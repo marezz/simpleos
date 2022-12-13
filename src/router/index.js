@@ -14,6 +14,7 @@ const routes = [
     {path:'/aprender',component: () => import('../views/aprender/AprMenu.vue')},
     {path:'/aprender/instrucoes',component: () => import('../views/aprender/AprInst.vue')},
     {path:'/aprender/digitar',component: () => import('../views/aprender/AprTeclado.vue')},
+    {path:'/aprender/mouse',component: () => import('../views/aprender/AprMouse.vue')},
 
     {path:'/notas',component: () => import('../views/notas/NotasMenu.vue')},
     {path:'/notas/escrever',component: () => import('../views/notas/NotasEsc.vue')},
