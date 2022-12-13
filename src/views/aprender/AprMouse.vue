@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 style="margin-top:-10vh;">Tutorial: Navegar na Internet</h1>
+        <h1 style="margin-top:-10vh;">Agilidade com o Mouse</h1>
 
         <svg class="fundo" style="top:0vh; right: 2vw" width="544" height="1080" viewBox="0 0 544 1080" fill="none"
             xmlns="http://www.w3.org/2000/svg">
@@ -81,15 +81,18 @@
             </defs>
         </svg>
 
-        <section class="menu">
+        <section id = "menu" class="menu">
             <div>
-                <img id="tri" src="@/assets/aprender/tri.png" height="2" width="2" style="display: none;">
-                <img id="circ" src="@/assets/aprender/circ.png" height="2" width="2" style="display: none;">
-                <img id="quad" src="@/assets/aprender/quad.png" height="2" width="2" style="display: none;">
-                <img id="pent" src="@/assets/aprender/pent.png" height="2" width="2" style="display: none;">
-                <img id="estr" src="@/assets/aprender/estr.png" height="2" width="2" style="display: none;">
-
-                <canvas id="trencherCanvas" height="600" width="800" ></canvas>
+                <img id="tri" src="../../assets/aprender/tri.png" height="2" width="2" style="display: none;">
+                <img id="circ" src="../../assets/aprender/circ.png" height="2" width="2" style="display: none;">
+                <img id="quad" src="../../assets/aprender/quad.png" height="2" width="2" style="display: none;">
+                <img id="pent" src="../../assets/aprender/pent.png" height="2" width="2" style="display: none;">
+                <img id="estr" src="../../assets/aprender/estr.png" height="2" width="2" style="display: none;">
+                <div style="position: absolute; top: 50%; display: flex; align-self: center;">
+                    <span id="tryagain">Jogar</span>
+                    <span id="tempo">Tempo:</span>
+                </div>
+                <canvas id="trencherCanvas" height="600" width="800"></canvas>
                 <button title="Tentar Novamente">
                     <div class="material-symbols-outlined" style="font-size: 2em; font-weight: bold;">
                         refresh
@@ -113,20 +116,22 @@
 export default {
     name: 'Apr_Mouse',
     mounted() {
-        var canvas = document.getElementById('trencherCanvas')
-        canvas.height = window.innerHeight*0.5
-        canvas.width = window.innerWidth*0.5
-        var canvasContext = canvas.getContext('2d')
+        var canvas = document.getElementById('trencherCanvas');
+        var canvasContext = canvas.getContext('2d');
 
-        var life = 10
-        var tempo = 0
+        canvas.width = document.getElementById("menu").offsetWidth/1.05
+        canvas.height = document.getElementById("menu").offsetHeight/1.05
 
-        var scalew = 100
-        var scaleh = 100
+        var life = 10;
+        var tempo = 0;
 
-        var pause = false
+        var scalew = 100;
+        var scaleh = 100;
 
-        var mousePos
+        var pause = true;
+        var comecou = false;
+
+        var mousePos;
 
         var imgs = [document.getElementById("tri"), document.getElementById("circ"), document.getElementById("quad"), document.getElementById("pent"), document.getElementById("estr")]
 
@@ -136,84 +141,56 @@ export default {
             id: imgs[Math.floor(Math.random() * 5)],
             w: scalew,
             h: scaleh
-        }]
-
-        var drawing = {
-            rectWithColor: function (rectX, rectY, rectW, rectH, rectColor) {
-                canvasContext.fillStyle = rectColor
-                canvasContext.fillRect(rectX, rectY, rectW, rectH)
-            },
-            strokeWithColor: function (x1, y1, x2, y2, color) { //or (x1,y1,x2,y2,width,color)
-                canvasContext.strokeStyle = color
-                //canvasContext.lineWidth = width 
-                canvasContext.moveTo(x1, y1)
-                canvasContext.lineTo(x2, y2)
-                canvasContext.stroke()
-            },
-            circleWithColor: function (centerX, centerY, radius, color) {
-                canvasContext.fillStyle = color
-                canvasContext.beginPath()
-                canvasContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true)
-                canvasContext.fill()
-            },
-            text: function (font, msg, x, y, color) {
-                canvasContext.fillStyle = color
-                canvasContext.font = font
-                canvasContext.fillText(msg, x, y)
-            }
-
-        }
+        }];
 
         function calculateMousePosition(evt) {
-            var rect = canvas.getBoundingClientRect()
-            var root = document.documentElement
+            var rect = canvas.getBoundingClientRect();
+            var root = document.documentElement;
 
-            var mouseX = evt.clientX - rect.left - root.scrollLeft
-            var mouseY = evt.clientY - rect.top - root.scrollTop
+            var mouseX = evt.clientX - rect.left - root.scrollLeft;
+            var mouseY = evt.clientY - rect.top - root.scrollTop;
 
             return {
                 x: mouseX,
                 y: mouseY
-            }
+            };
         }
 
         window.onload = function () {
-            var fps = 60
+            var fps = 15;
             setInterval(function () {
                 if (!pause) {
-                    tempo += 1 / 60
+                    tempo += 1 / fps;
                 }
-                draw()
+                draw();
                 if (life == 0) {
-                    pause = true
+                    pause = true;
                 }
-            }, 1000 / fps)
+            }, 1000 / fps);
 
             canvas.addEventListener('mousemove',
                 function (evt) {
-                    mousePos = calculateMousePosition(evt)
-                })
+                    mousePos = calculateMousePosition(evt);
+                });
             canvas.addEventListener('click',
                 function () {
                     if (!pause) {
                         if (mousePos.x > formas[0].x && mousePos.x < formas[0].x + formas[0].w && mousePos.y > formas[0].y && mousePos.y < formas[0].y + formas[0].h) {
-                            life--
-                            formas.pop()
-                            spawnImage()
-                        }
-                    } else {
-                        if (mousePos.x > canvas.width / 2 - 100 && mousePos.x < canvas.width / 2 + 100 && mousePos.y > canvas.height / 2 - 25 && mousePos.y < canvas.height / 2 + 25) {
-                            reset()
+                            life--;
+                            formas.pop();
+                            spawnImage();
                         }
                     }
-                })
-        }
+                });
+        };
 
-        function reset() {
+        document.getElementById("tryagain").onclick = function() {
             life = 10
             tempo = 0
             pause = false
+            comecou = true
         }
+        document.getElementById("tempo").style.display = "none";
 
         function spawnImage() {
             var forma = {
@@ -222,25 +199,25 @@ export default {
                 x: Math.floor(Math.random() * (canvas.width - scaleh - 1)),
                 y: Math.floor(Math.random() * (canvas.height - scaleh - 1)),
                 id: imgs[Math.floor(Math.random() * 5)]
-            }
-            formas.push(forma)
+            };
+            formas.push(forma);
         }
 
         function convertSecond(sec) {
-            var minutes = Math.floor(sec / 60)
-            var seconds = sec - minutes * 60
-            var milli = Math.floor((seconds - Math.floor(seconds)) * 100)
+            var minutes = Math.floor(sec / 60);
+            var seconds = sec - minutes * 60;
+            var milli = Math.floor((seconds - Math.floor(seconds)) * 100);
 
             if (Number(minutes) < 10) {
-                minutes = "0" + minutes
+                minutes = "0" + minutes;
             }
             if (Number(Math.floor(seconds)) < 10) {
-                seconds = "0" + Math.floor(seconds)
+                seconds = "0" + Math.floor(seconds);
             } else {
-                seconds = Math.floor(seconds)
+                seconds = Math.floor(seconds);
             }
             if (Number(milli) < 10) {
-                milli = "0" + milli
+                milli = "0" + milli;
             }
             return {
                 s: seconds,
@@ -251,16 +228,21 @@ export default {
         }
 
         function draw() {
-            //canvasContext.clearRect(0, 0, canvas.width, canvas.height)
-            drawing.rectWithColor(0, 0, canvas.width, canvas.height,"black")
+            canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+            //drawing.rectWithColor(0, 0, canvas.width, canvas.height,"white");
             if (!pause) {
-                canvasContext.drawImage(formas[0].id, formas[0].x, formas[0].y, formas[0].w, formas[0].h)
+                canvasContext.drawImage(formas[0].id, formas[0].x, formas[0].y, formas[0].w, formas[0].h);
+                document.getElementById("tempo").style.display = "none";
+                document.getElementById("tryagain").style.display = "none";
             } else {
-                drawing.rectWithColor(canvas.width / 2, canvas.height / 2 - 25, 200, 50, "red")
-                drawing.text("20px Arial", "Tente Novamente", canvas.width / 2 + 25, canvas.height / 2, "black")
-                drawing.text("30px Arial", convertSecond(tempo).m + ":" + convertSecond(tempo).s + ":" + convertSecond(tempo).ms + "", 100, 100, "blue")
+                if(comecou){
+                    document.getElementById("tempo").innerHTML = "Tempo: "+ convertSecond(tempo).m + ":" + convertSecond(tempo).s + ":" + convertSecond(tempo).ms + "";
+                    document.getElementById("tempo").style.display = "block";
+                }
+                document.getElementById("tryagain").style.display = "block";
             }
         }
+
     },
     methods: {},
     created() {
@@ -281,7 +263,33 @@ export default {
     margin-top: -1vh;
 }
 
-canvas{
-    margin: 0 auto;
+
+
+canvas {
+    margin: 2vh;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+}
+
+button {
+    color: white !important;
+	padding: 1%;
+	position: absolute;
+	z-index: 2;
+	bottom: 1vh;
+	right: 12vw;
+	background-color: #0041e4de;
+	border: none;
+	border-radius: 100px;
+	&:hover {
+		background-color: #2673d8;
+		box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+	}
+}
+
+span{
+    position: relative;
+    margin-top: -5vh;
+
 }
 </style>
