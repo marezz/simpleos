@@ -69,8 +69,6 @@
 
         <section class="menu">
             <br />
-            
-
             <ul>
                 <a href="https://google.com" target="_blank" class="link">
                     <li>
@@ -102,9 +100,9 @@
                         <img src="https://cdn.exclaimer.com/Handbook%20Images/TikTok_logo_64.png" />
                     </li>
                 </a>
-                <a href="https://pinterest.com" target="_blank" class="link">
+                <a href="https://itau.com.br" target="_blank" class="link">
                     <li>
-                        <img src="https://cdn.exclaimer.com/Handbook%20Images/pinterest-icon_64x64.png" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banco_Ita%C3%BA_logo.svg/1011px-Banco_Ita%C3%BA_logo.svg.png" style="width:64px" />
                     </li>
                 </a>
                 <a href="https://linkedin.com" target="_blank" class="link">
@@ -121,6 +119,26 @@
                     <li>
                         <img style="background:white; border-radius: 100px"
                             src="https://cdn-icons-png.flaticon.com/64/6124/6124990.png" />
+                    </li>
+                </a>
+                <a href="https://acesso.gov.br" target="_blank" class="link">
+                    <li>
+                        <img src="https://www.gov.br/pt-br/apps/app-gov.br/@@images/imagem/mini" style="width:64px" />
+                    </li>
+                </a>
+                <a href="https://acesso.gov.br" target="_blank" class="link">
+                    <li>
+                        <img src="https://www.gov.br/pt-br/apps/app-gov.br/@@images/imagem/mini" style="width:64px" />
+                    </li>
+                </a>
+                <a href="https://acesso.gov.br" target="_blank" class="link">
+                    <li>
+                        <img src="https://www.gov.br/pt-br/apps/app-gov.br/@@images/imagem/mini" style="width:64px" />
+                    </li>
+                </a>
+                <a href="https://acesso.gov.br" target="_blank" class="link">
+                    <li>
+                        <img src="https://www.gov.br/pt-br/apps/app-gov.br/@@images/imagem/mini" style="width:64px" />
                     </li>
                 </a>
                 <a href="https://acesso.gov.br" target="_blank" class="link">
@@ -181,7 +199,8 @@ ul {
     margin-top: 3vh;
     left: -2vh;
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    overflow-x:scroll;
+    grid-template-rows: 2 2;
     column-gap: 5%;
     row-gap: 5vh;
     min-width: 50vw;

@@ -74,7 +74,7 @@ export default {
                     r.style.setProperty('--tamanhofonte', '2rem');
                     break;
                 case 5:
-                    r.style.setProperty('--tamanhofonte', '3rem');
+                    r.style.setProperty('--tamanhofonte', '2.5rem');
                     break;
             }
         }

@@ -108,8 +108,6 @@ input[type="range"] {
     border: 2px solid black;
     min-height: 5vh;
     min-width: 20vw;
-
-
 }
 
 input[type=range]::-webkit-slider-runnable-track {

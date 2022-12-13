@@ -156,17 +156,19 @@
                 <img id="tec__" src="@/assets/aprender/tec__.png" style="display: none;">
                 <img id="til_png" src="@/assets/aprender/til_png.png" style="display: none;">
 
-                <canvas style="display:none; padding-top: 6%; padding-left: 4%;" id="trencherCanvas" height="400"
+                <canvas style="display:none;padding-left: 4%;" id="trencherCanvas" height="400"
                     width="1200"></canvas>
+                <div class="textinho">
+                    <p style="display: none;margin-top: -1vh;" id="frase1"></p>
+                    <p id="frase2" style="display: none; z-index: 9;color: yellow;"></p>
+                </div>
 
-                <p style="display: none;" id="frase1"></p>
-                <p id="frase2" style="display: none; z-index: 9;color: yellow;"></p>
             </div>
         </section>
 
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
-        <router-link to="/home" class="quit" style="color: black;">
+        <router-link to="/aprender" class="quit" style="color: black;">
             <div class="material-symbols-outlined" style="font-size: 2em;">
                 keyboard_double_arrow_left
             </div>
@@ -188,12 +190,12 @@ export default {
         var modal = document.querySelector("dialog")
         modal.showModal()
 
-        document.querySelector("dialog div").onclick = function () {  
+        document.querySelector("dialog div").onclick = function () {
             sessionStorage.setItem("reloading", "true");
             location.reload()
         }
 
-        function start(){
+        function start() {
             modal.close()
             document.getElementById("trencherCanvas").style.display = "block"
             document.getElementById("frase1").style.display = "block"
@@ -223,7 +225,7 @@ export default {
             capsOn: false
         }
 
-        var pals = ["Bem-vindo ao SimpleOS! Para começar o jogo, digite as teclas amarelas.","O rapaz foi ao mercado comprar frutas.","A menina gosta de ler?","O carro estacionou na rua.","O gato comeu o peixe-palhaço?","A mulher preparou um jantar luxuoso.","A noite cai cedo no inverno?","Eu gosto de comida brasileira.","Eu quero ir ao Rio de Janeiro!","Eu quero aprender mais sobre a cultura brasileira.","Vou ao mercado comprar frutas e legumes.","A professora ensina a ler e escrever.","O homem caminha em qual rua?","A menina brinca com a boneca."];
+        var pals = ["Bem-vindo ao SimpleOS! Para começar o jogo, digite as teclas amarelas.", "O rapaz foi ao mercado comprar frutas.", "A menina gosta de ler?", "O carro estacionou na rua.", "O gato comeu o peixe-palhaço?", "A mulher preparou um jantar luxuoso.", "A noite cai cedo no inverno?", "Eu gosto de comida brasileira.", "Eu quero ir ao Rio de Janeiro!", "Eu quero aprender mais sobre a cultura brasileira.", "Vou ao mercado comprar frutas e legumes.", "A professora ensina a ler e escrever.", "O homem caminha em qual rua?", "A menina brinca com a boneca."];
 
         var palavras = [{
             _self: pals[0]
@@ -334,7 +336,7 @@ export default {
                 especial.y = 140.98;
                 especial.img = document.getElementById("fixa")
             }
-            if(!especial.capsOn && palavras[0]._self.charAt(teclado.counter) == palavras[0]._self.charAt(teclado.counter).toLowerCase() && palavras[0]._self.charAt(teclado.counter) != "?" && palavras[0]._self.charAt(teclado.counter) != "!"){
+            if (!especial.capsOn && palavras[0]._self.charAt(teclado.counter) == palavras[0]._self.charAt(teclado.counter).toLowerCase() && palavras[0]._self.charAt(teclado.counter) != "?" && palavras[0]._self.charAt(teclado.counter) != "!") {
                 especial.check = false;
             }
         }
@@ -343,7 +345,7 @@ export default {
             var palavra = {
                 _self: pals[Math.floor(Math.random() * pals.length)],
             };
-            if(pals.includes("Bem-vindo ao SimpleOS! Para começar o jogo, digite as teclas amarelas.")){
+            if (pals.includes("Bem-vindo ao SimpleOS! Para começar o jogo, digite as teclas amarelas.")) {
                 pals.shift()
             }
             palavras.push(palavra);
@@ -452,6 +454,17 @@ dialog {
 
 dialog div:hover {
     cursor: pointer;
+}
+
+.textinho{
+    background: #002a9680;
+    border-radius: 20px;
+    min-height: 5vh;
+    padding: 1%;
+
+    p{
+        margin: 0 auto;
+    }
 }
 
 /******************************************************/

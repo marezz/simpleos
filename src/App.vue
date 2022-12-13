@@ -11,7 +11,7 @@
 export default {
   name: 'App',
   methods: {
-  }
+  },
 }
 
 </script>
@@ -124,9 +124,10 @@ span {
     pointer-events: none !important;
   }
 
-  .setasleft {
+  .setasleft {  
     display: none !important;
     pointer-events: none !important;
   }
 }
+
 </style>

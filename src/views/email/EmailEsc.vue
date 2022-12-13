@@ -38,10 +38,10 @@
         </svg>
 
         <section class="menu">
-            <form>
-                <h3>Para: <input type="email" style="min-width: 64.5vw;" /></h3>
-                <h3>Título: <input type="text" /></h3>
-                <textarea style="text-align: left;"></textarea>
+            <form ref="form" @submit.prevent="EnviarEmail">
+                <h3>Para: <input type="email" id="email_id" style="min-width: 64.5vw;" /></h3>
+                <h3>Título: <input type="text" id="titulo_id"/></h3>
+                <textarea style="text-align: left;" id="mensagem_id"></textarea>
                 <link rel="stylesheet"
                     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
                 <button class="button" type="submit"><span class="material-symbols-outlined"
@@ -51,11 +51,17 @@
                 </button>
             </form>
         </section>
+
+        <router-link to="/email" class="quit" style="color: black;">
+            <div class="material-symbols-outlined" style="font-size: 2em; font-weight: bold;">
+                keyboard_double_arrow_left
+            </div>
+        </router-link>
     </div>
 </template>
 
 <script>
-import * as email from './index.js';
+//import * as email from './index.js';
 import emailjs from '@emailjs/browser';
 
 export default {
@@ -78,9 +84,6 @@ export default {
                     console.log('FAILED...', error.text);
                 });
         },
-        TesteMail(){
-                email.authorize().then(email.listLabels()).catch(console.error);
-        }    
     },
     created() {
         document.getElementById("geral").href = "../geral.css";
@@ -91,12 +94,6 @@ export default {
 
 <style scoped lang="scss">
 .menu {
-    background-color: #d53d3db4;
-    border-radius: 20px;
-    min-width: 70vw;
-    min-height: 80vh;
-    display: block;
-    margin-top: -1vh;
     background-color: #d53d3db4;
     border-radius: 20px;
     min-width: 70vw;
@@ -116,36 +113,14 @@ input {
     border-radius: 50px;
     min-width: 63.75vw;
     min-height: 4vh;
-    font-size: calc(var(--tamanhofonte)*0.75);
-    text-align: left;
-    position: relative;
-    padding-left: 1vw;
-    border: 0;
-    outline: none;
-    margin: 0 auto;
-    border-radius: 50px;
-    min-width: 63.75vw;
-    min-height: 4vh;
 }
 
 h3 {
     margin: 1vh;
     font-size: var(--tamanhofonte);
-    margin: 1vh;
-    font-size: var(--tamanhofonte);
 }
 
 textarea {
-    padding: 1%;
-    font-size: var(--tamanhofonte);
-    text-align: center;
-    position: relative;
-    border: 0;
-    outline: none;
-    margin: 0 auto;
-    border-radius: 20px;
-    min-width: 68vw;
-    min-height: 60vh;
     padding: 1%;
     font-size: var(--tamanhofonte);
     text-align: center;
@@ -177,5 +152,9 @@ button {
         background-color: #970d0d;
         box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
     }
+}
+
+form{
+    padding: 10px;
 }
 </style>
