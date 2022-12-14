@@ -81,25 +81,31 @@
             </defs>
         </svg>
 
-        <section id = "menu" class="menu">
+        <dialog>
+            <h2>Tutorial - Clique nas formas e meça seu tempo</h2>
+            <img style="width: 25vw; min-width: 155px;" src="@/assets/aprender/mousetutorial.png">
+            <link rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
+            <div class="material-symbols-outlined" style="margin: 10px; font-size: 2em; font-weight: bold;">
+                keyboard_double_arrow_right
+            </div>
+        </dialog>
+
+        <section id="menu" class="menu">
             <div>
                 <img id="tri" src="../../assets/aprender/tri.png" height="2" width="2" style="display: none;">
                 <img id="circ" src="../../assets/aprender/circ.png" height="2" width="2" style="display: none;">
                 <img id="quad" src="../../assets/aprender/quad.png" height="2" width="2" style="display: none;">
                 <img id="pent" src="../../assets/aprender/pent.png" height="2" width="2" style="display: none;">
                 <img id="estr" src="../../assets/aprender/estr.png" height="2" width="2" style="display: none;">
-                <div style="position: absolute; top: 50%; display: flex; align-self: center;">
-                    <span id="tryagain">Jogar</span>
-                    <span id="tempo">Tempo:</span>
-                </div>
-                <canvas id="trencherCanvas" height="600" width="800"></canvas>
-                <button title="Tentar Novamente">
-                    <div class="material-symbols-outlined" style="font-size: 2em; font-weight: bold;">
-                        refresh
-                    </div>
-                </button>
+                <canvas id="trencherCanvas" height="600" width="800" style="display: none;"></canvas>
             </div>
         </section>
+
+        <div style="position: absolute; left: 6%; top: 50%; display: flex;">
+            <span id="tryagain" style="display: none;">Jogar</span>
+            <span id="tempo">Tempo:</span>
+        </div>
 
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
@@ -116,25 +122,34 @@
 export default {
     name: 'Apr_Mouse',
     mounted() {
+        //Modal
+        var modal = document.querySelector("dialog")
+        modal.showModal()
+
+        document.querySelector("dialog div").onclick = function () {
+            sessionStorage.setItem("reloading", "true");
+            location.reload()
+        }
+
+        function start() {
+            modal.close()
+            document.getElementById("trencherCanvas").style.display = "block"
+            document.getElementById("tryagain").style.display = "block"
+        }
+
+        //Canvas
         var canvas = document.getElementById('trencherCanvas');
         var canvasContext = canvas.getContext('2d');
-
-        canvas.width = document.getElementById("menu").offsetWidth/1.05
-        canvas.height = document.getElementById("menu").offsetHeight/1.05
-
+        canvas.width = document.getElementById("menu").offsetWidth
+        canvas.height = document.getElementById("menu").offsetHeight
         var life = 10;
         var tempo = 0;
-
         var scalew = 100;
         var scaleh = 100;
-
         var pause = true;
         var comecou = false;
-
         var mousePos;
-
         var imgs = [document.getElementById("tri"), document.getElementById("circ"), document.getElementById("quad"), document.getElementById("pent"), document.getElementById("estr")]
-
         var formas = [{
             x: canvas.width / 2,
             y: canvas.height / 2,
@@ -146,17 +161,45 @@ export default {
         function calculateMousePosition(evt) {
             var rect = canvas.getBoundingClientRect();
             var root = document.documentElement;
-
             var mouseX = evt.clientX - rect.left - root.scrollLeft;
             var mouseY = evt.clientY - rect.top - root.scrollTop;
-
             return {
                 x: mouseX,
                 y: mouseY
             };
         }
 
+        /*var drawing = {
+            rectWithColor: function (rectX, rectY, rectW, rectH, rectColor) {
+                canvasContext.fillStyle = rectColor;
+                canvasContext.fillRect(rectX, rectY, rectW, rectH);
+            },
+            strokeWithColor: function (x1, y1, x2, y2, color) { //or (x1,y1,x2,y2,width,color)
+                canvasContext.strokeStyle = color;
+                //canvasContext.lineWidth = width;
+                canvasContext.moveTo(x1, y1);
+                canvasContext.lineTo(x2, y2);
+                canvasContext.stroke();
+            },
+            circleWithColor: function (centerX, centerY, radius, color) {
+                canvasContext.fillStyle = color;
+                canvasContext.beginPath();
+                canvasContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
+                canvasContext.fill();
+            },
+            text: function (font, msg, x, y, color) {
+                canvasContext.fillStyle = color;
+                canvasContext.font = font;
+                canvasContext.fillText(msg, x, y);
+            }
+        };*/
+
         window.onload = function () {
+            var reloading = sessionStorage.getItem("reloading");
+            if (reloading) {
+                sessionStorage.removeItem("reloading");
+                start();
+            }
             var fps = 15;
             setInterval(function () {
                 if (!pause) {
@@ -167,7 +210,6 @@ export default {
                     pause = true;
                 }
             }, 1000 / fps);
-
             canvas.addEventListener('mousemove',
                 function (evt) {
                     mousePos = calculateMousePosition(evt);
@@ -183,15 +225,13 @@ export default {
                     }
                 });
         };
-
-        document.getElementById("tryagain").onclick = function() {
+        document.getElementById("tryagain").onclick = function () {
             life = 10
             tempo = 0
             pause = false
             comecou = true
         }
         document.getElementById("tempo").style.display = "none";
-
         function spawnImage() {
             var forma = {
                 w: scalew,
@@ -202,12 +242,10 @@ export default {
             };
             formas.push(forma);
         }
-
         function convertSecond(sec) {
             var minutes = Math.floor(sec / 60);
             var seconds = sec - minutes * 60;
             var milli = Math.floor((seconds - Math.floor(seconds)) * 100);
-
             if (Number(minutes) < 10) {
                 minutes = "0" + minutes;
             }
@@ -224,9 +262,7 @@ export default {
                 m: minutes,
                 ms: milli
             }
-
         }
-
         function draw() {
             canvasContext.clearRect(0, 0, canvas.width, canvas.height);
             //drawing.rectWithColor(0, 0, canvas.width, canvas.height,"white");
@@ -235,14 +271,13 @@ export default {
                 document.getElementById("tempo").style.display = "none";
                 document.getElementById("tryagain").style.display = "none";
             } else {
-                if(comecou){
-                    document.getElementById("tempo").innerHTML = "Tempo: "+ convertSecond(tempo).m + ":" + convertSecond(tempo).s + ":" + convertSecond(tempo).ms + "";
+                if (comecou) {
+                    document.getElementById("tempo").innerHTML = "Tempo: " + convertSecond(tempo).m + ":" + convertSecond(tempo).s + ":" + convertSecond(tempo).ms + "";
                     document.getElementById("tempo").style.display = "block";
                 }
                 document.getElementById("tryagain").style.display = "block";
             }
         }
-
     },
     methods: {},
     created() {
@@ -250,7 +285,6 @@ export default {
         document.getElementById("meucss").href = "../bckg/aprender.css";
     }
 }
-
 </script>
 
 <style scoped lang="scss">
@@ -263,33 +297,53 @@ export default {
     margin-top: -1vh;
 }
 
-
-
 canvas {
     margin: 2vh;
     border-radius: 20px;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+}
+
+canvas:hover {
+    cursor: crosshair;
+}
+
+#tryagain:hover{
+    cursor: pointer;
 }
 
 button {
     color: white !important;
-	padding: 1%;
-	position: absolute;
-	z-index: 2;
-	bottom: 1vh;
-	right: 12vw;
-	background-color: #0041e4de;
-	border: none;
-	border-radius: 100px;
-	&:hover {
-		background-color: #2673d8;
-		box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
-	}
+    padding: 1%;
+    position: absolute;
+    z-index: 2;
+    bottom: 1vh;
+    right: 12vw;
+    background-color: #0041e4de;
+    border: none;
+    border-radius: 100px;
+
+    &:hover {
+        background-color: #2673d8;
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+    }
 }
 
-span{
+span {
     position: relative;
     margin-top: -5vh;
+}
 
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog {
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, rgba(77, 201, 230, 0.35) 0%, rgba(33, 12, 174, 0.48) 100%);
+}
+
+dialog div:hover {
+    cursor: pointer;
 }
 </style>
