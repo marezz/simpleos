@@ -67,86 +67,29 @@
             </defs>
         </svg>
 
+        <dialog>
+            <h2>Adicionar site</h2>
+            <form @submit.prevent="newIcon($event)">
+                <input type="url" v-model="form.url"/>
+                <link rel="stylesheet"
+                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
+                <button type="submit" class="material-symbols-outlined" style="margin: 10px; font-size: 2em; font-weight: bold;">
+                    done
+                </button>
+            </form>
+        </dialog>
+
         <section class="menu">
             <br />
             <ul>
-                <a href="https://google.com" target="_blank" class="link">
-                    <li>
-                        <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-70.png" />
-                    </li>
-                </a>
-                <a href="https://fb.com" target="_blank" class="link">
-                    <li>
-                        <img src="https://cdn.exclaimer.com/Handbook%20Images/facebook-icon_64x64.png">
-                    </li>
-                </a>
-                <a href="https://instagram.com" target="_blank" class="link">
-                    <li>
-                        <img src="https://cdn-icons-png.flaticon.com/64/2111/2111463.png" />
-                    </li>
-                </a>
-                <a href="https://twitter.com" target="_blank" class="link">
-                    <li>
-                        <img src="https://cdn.exclaimer.com/Handbook%20Images/twitter-icon_64x64.png">
-                    </li>
-                </a>
-                <a href="https://web.whatsapp.com" target="_blank" class="link">
-                    <li>
-                        <img src="https://cdn.exclaimer.com/Handbook%20Images/whatsapp_64.png" />
-                    </li>
-                </a>
-                <a href="https://tiktok.com" target="_blank" class="link">
-                    <li>
-                        <img src="https://cdn.exclaimer.com/Handbook%20Images/TikTok_logo_64.png" />
-                    </li>
-                </a>
-                <a href="https://itau.com.br" target="_blank" class="link">
-                    <li>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banco_Ita%C3%BA_logo.svg/1011px-Banco_Ita%C3%BA_logo.svg.png" style="width:64px" />
-                    </li>
-                </a>
-                <a href="https://linkedin.com" target="_blank" class="link">
-                    <li>
-                        <img src="https://cdn.exclaimer.com/Handbook%20Images/linkedin-icon_64x64.png" />
-                    </li>
-                </a>
-                <a href="https://youtube.com" target="_blank" class="link">
-                    <li>
-                        <img src="https://cdn.exclaimer.com/Handbook%20Images/youtube-icon_64x64.png" />
-                    </li>
-                </a>
-                <a href="https://open.spotify.com" target="_blank" class="link">
-                    <li>
-                        <img style="background:white; border-radius: 100px"
-                            src="https://cdn-icons-png.flaticon.com/64/6124/6124990.png" />
-                    </li>
-                </a>
-                <a href="https://acesso.gov.br" target="_blank" class="link">
-                    <li>
-                        <img src="https://www.gov.br/pt-br/apps/app-gov.br/@@images/imagem/mini" style="width:64px" />
-                    </li>
-                </a>
-                <a href="https://acesso.gov.br" target="_blank" class="link">
-                    <li>
-                        <img src="https://www.gov.br/pt-br/apps/app-gov.br/@@images/imagem/mini" style="width:64px" />
-                    </li>
-                </a>
-                <a href="https://acesso.gov.br" target="_blank" class="link">
-                    <li>
-                        <img src="https://www.gov.br/pt-br/apps/app-gov.br/@@images/imagem/mini" style="width:64px" />
-                    </li>
-                </a>
-                <a href="https://acesso.gov.br" target="_blank" class="link">
-                    <li>
-                        <img src="https://www.gov.br/pt-br/apps/app-gov.br/@@images/imagem/mini" style="width:64px" />
-                    </li>
-                </a>
-                <a href="https://acesso.gov.br" target="_blank" class="link">
-                    <li>
-                        <img src="https://www.gov.br/pt-br/apps/app-gov.br/@@images/imagem/mini" style="width:64px" />
-                    </li>
-                </a>
-                <span class="material-symbols-rounded add">
+                <template v-for="block in blocks" :key="block">
+                    <a v-bind:href="block.link" target="_blank" class="link">
+                        <li>
+                            <img v-bind:src="block.icon" style="width:64px"/>
+                        </li>
+                    </a>
+                </template>
+                <span id="add" class="material-symbols-rounded add">
                     add_box
                 </span>
             </ul>
@@ -164,7 +107,38 @@
 <script>
 export default {
     name: 'IntSites',
-    methods: {},
+    data(){
+        return{
+            blocks: [
+                {link:"https://google.com",icon:"https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-70.png"},
+                {link:"https://fb.com",icon:"https://cdn.exclaimer.com/Handbook%20Images/facebook-icon_64x64.png"},
+                {link:"https://instagram.com",icon:"https://cdn-icons-png.flaticon.com/64/2111/2111463.png"},
+                {link:"https://twitter.com",icon:"https://cdn.exclaimer.com/Handbook%20Images/twitter-icon_64x64.png"},
+                {link:"https://web.whatsapp.com",icon:"https://cdn.exclaimer.com/Handbook%20Images/whatsapp_64.png"},
+                {link:"https://tiktok.com",icon:"https://cdn.exclaimer.com/Handbook%20Images/TikTok_logo_64.png"},
+                {link:"https://itau.com.br",icon:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banco_Ita%C3%BA_logo.svg/1011px-Banco_Ita%C3%BA_logo.svg.png"},
+                {link:"https://linkedin.com",icon:"https://cdn.exclaimer.com/Handbook%20Images/linkedin-icon_64x64.png"},
+                {link:"https://youtube.com",icon:"https://cdn.exclaimer.com/Handbook%20Images/youtube-icon_64x64.png"},
+                {link:"https://open.spotify.com",icon:"https://cdn-icons-png.flaticon.com/64/6124/6124990.png"},
+                {link:"https://acesso.gov.br",icon:"https://www.gov.br/pt-br/apps/app-gov.br/@@images/imagem/mini"}],
+            form:{
+                url:''
+            }
+        }
+    },
+    methods: {
+        newIcon(e){
+            e.preventDefault()
+            var addIcon = "https://s2.googleusercontent.com/s2/favicons?domain="+this.form.url
+            this.blocks.push({link:this.form.url,icon:addIcon})
+            document.querySelector("dialog").close()
+        }
+    },
+    mounted() {
+        document.getElementById("add").onclick = function(){
+            document.querySelector("dialog").showModal()
+        }
+    },
     created() {
         document.getElementById("geral").href = "../geral.css";
         document.getElementById("meucss").href = "../bckg/internet.css";
@@ -199,8 +173,7 @@ ul {
     margin-top: 3vh;
     left: -2vh;
     display: grid;
-    overflow-x:scroll;
-    grid-template-rows: 2 2;
+    grid-template-columns: auto auto auto auto;
     column-gap: 5%;
     row-gap: 5vh;
     min-width: 50vw;
@@ -251,5 +224,20 @@ button {
 button:hover {
     background-color: rgba(180, 180, 180, 0.812);
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+dialog {
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, rgba(215, 143, 4, 0.35) 0%, rgba(244, 192, 6, 0.48) 100%);
+}
+
+dialog div:hover {
+    cursor: pointer;
 }
 </style>
