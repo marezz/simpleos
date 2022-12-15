@@ -7,9 +7,11 @@ const routes = [
 
     {path:'/internet',component: () => import('../views/internet/IntMenu.vue')},
     {path:'/internet/sites',component: () => import('../views/internet/IntSites.vue')},
+    {path:'/internet/pesq_imagens',component: () => import('../views/internet/IntImg.vue')},
 
     {path:'/email',component: () => import('../views/email/EmailMenu.vue')},
     {path:'/email/escrever',component: () => import('../views/email/EmailEsc.vue')},
+    {path:'/email/ler',component: () => import('../views/email/EmailLer.vue')},
 
     {path:'/aprender',component: () => import('../views/aprender/AprMenu.vue')},
     {path:'/aprender/instrucoes',component: () => import('../views/aprender/AprInst.vue')},
@@ -23,6 +25,7 @@ const routes = [
     {path:'/configs',component: () => import('../views/configs/ConfigMenu.vue')},
     {path:'/configs/audio',component: () => import('../views/configs/ConfigAudio.vue')},
     {path:'/configs/fonte',component: () => import('../views/configs/ConfigFonte.vue')},
+    {path:'/configs/net',component: () => import('../views/configs/ConfigWifi.vue')},
     {path:'/configs/cores',component: () => import('../views/configs/ConfigCores.vue')}
 ]
 

@@ -401,7 +401,6 @@ export default {
 <style scoped lang='scss'>
 .source {
   background-color: #03210dae;
-  padding: 0.5%;
   border-radius: 50px;
 }
 
@@ -412,7 +411,7 @@ input[type=text] {
   padding-left: 1vw;
   border: 0;
   outline: none;
-  margin: 0 auto;
+  margin: 1vh auto;
   border-radius: 50px;
   min-width: 50;
   min-height: 4vh;
@@ -429,6 +428,7 @@ input[type=text] {
 }
 
 .botoes {
+  font-size: var(--tamanhofonte);
   display: flex;
   align-items: center;
   justify-content: space-around;

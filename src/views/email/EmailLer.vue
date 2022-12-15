@@ -1,7 +1,7 @@
 
 <template>
     <div>
-        <h1 style="margin-top:-10vh;">Escrever email</h1>
+        <h1 style="margin-top:-10vh;">Ler emails</h1>
 
         <svg class="fundo" style="bottom:10vh;left:5vh;height: 40%;" xmlns="http://www.w3.org/2000/svg" width="420"
             height="451" viewBox="0 0 420 451" fill="none">
@@ -37,21 +37,33 @@
             </g>
         </svg>
 
-        <section class="menu">
-            <form ref="form" @submit.prevent="EnviarEmail">
-                <h3>Para: <input type="email" id="email_id" style="min-width: 64.5vw;" /></h3>
-                <h3>Título: <input type="text" id="titulo_id"/></h3>
-                <textarea style="text-align: left;" id="mensagem_id"></textarea>
-                <link rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
-                <button class="button" type="submit"><span class="material-symbols-outlined"
-                        style="background:none;margin:0;padding: 0;font-size: 4em;color: white;">
-                        send
-                    </span>
-                </button>
-            </form>
+        <section class="lado">
+            <span style="background-color: rgba(255, 255, 255, 0.677);">Esperando começar</span>
+            <span style="background-color: #970d0d; color: white;">Projeto Final</span>
+            <span>Festa da Empresa</span>
+            <span>Formatura</span>
+            <span>Convite</span>
+            <span>Lembrete pro futuro</span>
+            <span>Você ganhou R$1000!</span>
+            <span>Boletim 3º Trimestre</span>
+            <span>Vamo mengão</span>
+            <span>Festa da Empresa</span>
+            <span>Festa da Empresa</span>
+            <span>Festa da Empresa</span>
         </section>
 
+        <section class="menu">
+            <h3>De: <span>Antonio</span></h3>
+            <h3>Assunto: <span>Projeto</span></h3>
+            <h3>Mensagem:</h3>
+            <div>
+                Segue logo do projeto: <strong>SimpleOS</strong><br /><br />
+                <img src="../../assets/logo-simpleos.png">
+            </div>
+        </section>
+
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
         <router-link to="/email" class="quit" style="color: black;">
             <div class="material-symbols-outlined" style="font-size: 2em; font-weight: bold;">
                 keyboard_double_arrow_left
@@ -66,6 +78,7 @@ import emailjs from '@emailjs/browser';
 
 export default {
     name: 'Email_Esc',
+    data() { },
     methods: {
         EnviarEmail() {
             var templateParams = {
@@ -93,68 +106,86 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.menu {
+.lado {
+    float: left;
     background-color: #d53d3db4;
     border-radius: 20px;
-    min-width: 70vw;
+    width: 20vw;
+    max-height: 77vh;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    padding: 1%;
+
+    span {
+        background-color: white;
+        font-size: var(--tamanhofonte);
+        color: black;
+        max-height: 5vh;
+        width: 100%;
+        margin: 1vh auto;
+        padding: 5%;
+        border-radius: 100px;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.677);
+        }
+
+        &:active {
+            color: white;
+            background-color: #970d0d;
+        }
+    }
+
+    &::-webkit-scrollbar {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 100px;
+    }
+}
+
+.menu {
+    float: right;
+    background-color: #d53d3db4;
+    border-radius: 20px;
+    min-width: 58vw;
+    max-width: 60vw;
     min-height: 77vh;
     display: block;
-    margin-top: -1vh;
-}
-
-input {
-    font-size: calc(var(--tamanhofonte)*0.75);
+    margin: 0;
+    font-size: var(--tamanhofonte);
     text-align: left;
-    position: relative;
-    padding-left: 1vw;
-    border: 0;
-    outline: none;
-    margin: 0 auto;
-    border-radius: 50px;
-    min-width: 63.75vw;
-    min-height: 4vh;
-}
-
-h3 {
-    margin: 1vh;
-    font-size: var(--tamanhofonte);
-}
-
-textarea {
     padding: 1%;
-    font-size: var(--tamanhofonte);
-    text-align: center;
-    position: relative;
-    border: 0;
-    outline: none;
-    margin: 0 auto;
-    border-radius: 20px;
-    min-width: 68vw;
-    min-height: 60vh;
-}
+    text-shadow: none;
 
-button {
-    padding: 1%;
-    position: absolute;
-    z-index: 2;
-    bottom: 8vh;
-    right: 14vw;
-    background-color: #d53d3d;
-    border: none;
-    border-radius: 100px;
-
-    &:hover {
-        background-color: #970d0d;
-        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+    span {
+        background-color: white;
+        color: black;
+        border-radius: 100px;
+        padding: 0.5%;
+        font-size: var(--tamanhofonte);
     }
 
-    &:hover {
-        background-color: #970d0d;
-        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
-    }
-}
+    div {
+        background-color: white;
+        color: black;
+        padding: 1%;
+        height: 55vh;
+        max-height: 55vh;
+        border-radius: 20px;
+        overflow-y: scroll;
 
-form{
-    padding: 10px;
+        &::-webkit-scrollbar {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 100px;
+        }
+    }
 }
 </style>

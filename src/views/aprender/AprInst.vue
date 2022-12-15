@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 style="margin-top:-10vh;">Tutorial: Navegar na Internet</h1>
+        <h1 style="margin-top:-10vh;">Instruções Básicas</h1>
 
         <svg class="fundo" style="top:0vh; right: 2vw" width="544" height="1080" viewBox="0 0 544 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g style="mix-blend-mode:soft-light" opacity="0.5" filter="url(#filter0_d_329_3)">
@@ -71,14 +71,22 @@
             </defs>
         </svg>
 
+        
+        <section class="lado">
+            <span style="background-color: #0041e4de; color: white;">Navegando pelo SimpleOS</span>
+            <span>Customização</span>
+            <span>Como pesquisar</span>
+            <span>Enviando um email</span>
+            <span>Pedindo ajuda</span>
+            <span>Adicionando um site</span>
+            <span>Aprendendo a desenhar</span>
+            <span>Como pesquisar</span>
+            <span>Pedindo ajuda</span>
+            <span>Como pesquisar</span>
+        </section>
+
         <section class="menu">
-            <div>
-                <iframe style="position: relative; top: 10vh;height: 60vh;width: 60vw;" src="https://www.youtube.com/embed/TmiFdXrgRJ8?theme=dark"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
-            </div>
+            
         </section>
 
         <link rel="stylesheet"
@@ -89,28 +97,122 @@
             </div>
         </router-link>
     </div>
-
 </template>
 
 <script>
+//import * as email from './index.js';
+import emailjs from '@emailjs/browser';
+
 export default {
-    name: 'Apr_Inst',
-    methods: {},
+    name: 'Email_Esc',
+    data() { },
+    methods: {
+        EnviarEmail() {
+            var templateParams = {
+                to_email: document.getElementById("email_id").value,
+                subject: document.getElementById("titulo_id").value,
+                message: document.getElementById("mensagem_id").value
+            }
+
+            emailjs.send('service_gmail', 'template_gmail', templateParams, 'SZ_HWbptxW2qQ7KVp')
+                .then((result) => {
+                    alert("Seu e-mail foi enviado com sucesso!");
+                    console.log('SUCCESS!', result.text);
+                    window.location.reload();
+                }, (error) => {
+                    alert("Ocorreu um erro, tente novamente.")
+                    console.log('FAILED...', error.text);
+                });
+        },
+    },
     created() {
         document.getElementById("geral").href = "../geral.css";
         document.getElementById("meucss").href = "../bckg/aprender.css";
     }
 }
-
 </script>
 
 <style scoped lang="scss">
-.menu {
+.lado {
+    float: left;
     background-color: #002a9680;
     border-radius: 20px;
-    min-width: 70vw;
-    min-height: 80vh;
+    width: 20vw;
+    max-height: 77vh;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    padding: 1%;
+
+    span {
+        background-color: white;
+        font-size: var(--tamanhofonte);
+        color: black;
+        max-height: 5vh;
+        width: 100%;
+        margin: 1vh auto;
+        padding: 5%;
+        border-radius: 100px;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.677);
+        }
+
+        &:active {
+            color: white;
+            background-color: #0041e4de;
+        }
+    }
+
+    &::-webkit-scrollbar {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 100px;
+    }
+}
+
+.menu {
+    float: right;
+    background-color: #002a9680;
+    border-radius: 20px;
+    min-width: 58vw;
+    max-width: 60vw;
+    min-height: 77vh;
     display: block;
-    margin-top: -1vh;
+    margin: 0;
+    font-size: var(--tamanhofonte);
+    text-align: left;
+    padding: 1%;
+    text-shadow: none;
+
+    span {
+        background-color: white;
+        color: black;
+        border-radius: 100px;
+        padding: 0.5%;
+        font-size: var(--tamanhofonte);
+    }
+
+    div {
+        background-color: white;
+        color: black;
+        padding: 1%;
+        height: 55vh;
+        max-height: 55vh;
+        border-radius: 20px;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 100px;
+        }
+    }
 }
 </style>
