@@ -67,33 +67,19 @@
             </defs>
         </svg>
 
-        <dialog>
-            <h2>Adicionar Site</h2>
-            <form @submit.prevent="newIcon($event)">
-                <input type="url" placeholder="https://exemplo.com.br" v-model="form.url" />
-                <link rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
-                <button type="submit" class="material-symbols-outlined"
-                    style="margin: 10px; font-size: 2em; font-weight: bold;">
-                    done
-                </button>
-            </form>
-        </dialog>
-
         <section class="menu">
-            <br />
-            <ul>
-                <template v-for="block in blocks" :key="block">
-                    <a v-bind:href="block.link" target="_blank" class="link">
-                        <li>
-                            <img v-bind:src="block.icon" style="width:64px" />
-                        </li>
-                    </a>
-                </template>
-                <span id="add" class="material-symbols-rounded add">
-                    add_box
-                </span>
-            </ul>
+
+            <div style=" position:relative;">
+                <form autocomplete="off" action="https://www.google.com/search" class="searchform" method="get"
+                    name="searchform" target="_blank">
+                    <button class="button" type="button" onclick="document.getElementById('filein').click()"><img
+                            src="@/assets/internet/pimagem.png" /></button>
+                    <input type="file" id="filein" />
+                    <input type="submit" value="Pesquisar">
+                </form>
+
+            </div>
+
         </section>
 
         <router-link to="/internet" class="quit" style="color: black;">
