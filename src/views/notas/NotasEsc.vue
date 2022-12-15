@@ -233,7 +233,7 @@ export default {
 
 <style scoped lang="scss">
 .menu {
-    background-color: #08352880;
+    background-color: #03210dae;
     border-radius: 20px;
     min-width: 70vw;
     min-height: 70vh;
@@ -242,7 +242,7 @@ export default {
 }
 
 .menu2 {
-    background-color: #08352880;
+    background-color: #03210dae;
     border-radius: 20px;
     min-width: 70vw;
     min-height: 70vh;

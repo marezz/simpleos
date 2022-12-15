@@ -120,7 +120,8 @@
 
   <div id="app" style="padding: 0%;">
     <div class="flex-row" style="padding: 0%;">
-      <div class="source" style="padding: 0%;">
+      <div class="source">
+        <h3 id="titulo">Título: <input type="text" /></h3>
         <vue-drawing-canvas class="canvas" ref="VueCanvasDrawing" v-model:image="image" canvasId='canvas' :width="1200"
           :height="600" :stroke-type="strokeType" :line-cap="lineCap" :line-join="lineJoin" :fill-shape="fillShape"
           :eraser="eraser" :lineWidth="line" :color="color" :background-color="backgroundColor"
@@ -130,25 +131,35 @@
             'box-shadow': '0px 0px 25px rgba(0, 0, 0, 0.25)',
           }" :lock="disabled" @mousemove="getCoordinate($event)" :additional-images="additionalImages" :bucket=false />
         <br />
-        <div class="button-container">
-          <label>Título <input type="text" id="titulo" /></label>
-          <input type="color" v-model="color" />
-          <button type="button" @click.prevent="$refs.VueCanvasDrawing.undo()">
-            Desfazer
+        <div class="botoes">
+          <button title="Desfazer" type="button" @click.prevent="$refs.VueCanvasDrawing.undo()">
+            <div class="material-symbols-outlined" style="font-size: 3em !important;">
+              undo
+            </div>
           </button>
-          <button type="button" @click.prevent="$refs.VueCanvasDrawing.redo()">
-            Refazer
+          <button title="Refazer" type="button" @click.prevent="$refs.VueCanvasDrawing.redo()">
+            <div class="material-symbols-outlined" style="font-size: 3em !important;">
+              redo
+            </div>
           </button>
-          <button type="button" @click.prevent="$refs.VueCanvasDrawing.reset()">
-            Resetar
+          <button title="Limpar" type="button" @click.prevent="$refs.VueCanvasDrawing.reset()">
+            <div class="material-symbols-outlined" style="font-size: 3em !important;">
+              delete_sweep
+            </div>
           </button>
-          <button type="button" @click.prevent="baixar()">
-            Baixar
+          <button title="Baixar" type="button" @click.prevent="baixar()">
+            <div class="material-symbols-outlined" style="font-size: 3em !important;">
+              download
+            </div>
           </button>
-          <input type="checkbox" v-model="eraser"/>
+          <button title="Colorir" type="button" id="tryBucket" @click.prevent="fillLocation();">
+            <div class="material-symbols-outlined" style="font-size: 3em !important;">
+              format_color_fill
+            </div>
+          </button>
+          <h3>Largura: </h3>
           <input type="range" min="1" max="30" onchange="changeLineWidth(this.v-model);" v-model="line">
-          <span v-text="line"></span>
-          <input type="checkbox" id="tryBucket" @click.prevent="fillLocation();">
+          <input title="Cor" type="color" v-model="color" />
         </div>
       </div>
     </div>
@@ -206,6 +217,8 @@ export default {
         window.localStorage.getItem("vue-drawing-canvas")
       );
     }
+
+    
   },
   methods: {
     async setImage(event) {
@@ -358,7 +371,7 @@ export default {
       if (!inicio) {
         titulo = "desenho.png"
       } else {
-        titulo = document.getElementById('titulo').value + "png";
+        titulo = document.getElementById('titulo').value + ".png";
       }
 
       // this can be used to download any image from webpage to local disk
@@ -386,76 +399,102 @@ export default {
 
 
 <style scoped lang='scss'>
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.button-container {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-}
-
-.button-container>* {
-  margin: 1%;
-  font-size: calc(var(--tamanhofonte)*0.75);
-  z-index: 2;
-  background-color: #08352880;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  height: 4vh;
-
-  &:hover {
-    background-color: #4dbb4d;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
-  }
-}
-
-input[type=color]::-webkit-color-swatch {
-  border-radius: 10px;
-}
-
 .source {
-  margin: 0 auto !important;
+  background-color: #03210dae;
+  padding: 0.5%;
+  border-radius: 50px;
 }
 
-.canvas {
-  cursor: url('brush.png'), auto;
-}
-
-input[type=range] {
-  -webkit-appearance: none;
-}
-
-input[type="range"] {
-  background: rgba(245, 245, 245, 0.692);
-  border-radius: 100px;
-  border: 2px solid black;
-  min-height: 5vh;
-  min-width: 20vw;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-  border-radius: 100px;
-  max-width: 97%;
+input[type=text] {
+  font-size: calc(var(--tamanhofonte)*0.75);
+  text-align: left;
+  position: relative;
+  padding-left: 1vw;
+  border: 0;
+  outline: none;
   margin: 0 auto;
+  border-radius: 50px;
+  min-width: 50;
+  min-height: 4vh;
 }
 
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 40px;
-  height: 40px;
-  background: #000;
-  cursor: ew-resize;
-  border-radius: 100px;
 
-  &:hover {
-    box-shadow: inset 0 0 0 5px black;
+#titulo {
+  margin: 1vh;
+  font-size: var(--tamanhofonte);
+  padding: 0.5% 0 0.5% 0;
+  width: 20vw;
+  margin: 2vh auto;
+  border-radius: 20px;
+}
+
+.botoes {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 2vh auto;
+  font-weight: bold !important;
+
+  button {
+    background: transparent;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 1%;
+
+    &:hover{
+      background-color: #4dbb4d;
+    }
+
+  }
+
+  input[type=color] {
+    background: none;
+    color: white;
+    border: none;
+    font-size: var(--tamanhofonte);
+    border-radius: 10px;
+    height: 100%;
+
+    &::-webkit-color-swatch {
+      border-radius: 10px;
+      border: none;
+      height: 45px;
+    }
+  }
+
+  span {
+    all: initial;
+    color: white;
+    font-size: 3em;
+
+    * {
+      all: unset;
+    }
+  }
+
+  input[type=range] {
+    margin-left: -6vw;
+    -webkit-appearance: none;
     background: white;
+    border-radius: 100px;
+    min-height: 4vh;
+
+    &::-webkit-slider-runnable-track {
+      border-radius: 100px;
+      max-width: 97%;
+      margin: 0 auto;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: #000;
+      cursor: ew-resize;
+      border-radius: 100px;
+    }
   }
 }
 
@@ -483,16 +522,4 @@ input[type="range"]::-webkit-slider-thumb {
     transform: scale(0.5);
   }
 }
-
-label {
-  padding: 1%;
-}
-
-/* Create a custom checkbox */
-input[type="checkbox"]::before {
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-}
-
 </style>

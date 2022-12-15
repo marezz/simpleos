@@ -102,7 +102,7 @@
             </div>
         </section>
 
-        <div style="position: absolute; left: 6%; top: 50%; display: flex;">
+        <div id="jogo">
             <span id="tryagain" style="display: none;">Jogar</span>
             <span id="tempo">Tempo:</span>
         </div>
@@ -298,6 +298,7 @@ export default {
 }
 
 canvas {
+    position: relative;
     margin: 2vh;
     border-radius: 20px;
 }
@@ -327,11 +328,6 @@ button {
     }
 }
 
-span {
-    position: relative;
-    margin-top: -5vh;
-}
-
 dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -346,4 +342,20 @@ dialog {
 dialog div:hover {
     cursor: pointer;
 }
+
+#jogo{
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    display: flex;
+    justify-content: space-between;
+
+    span{
+        margin: 0 auto;
+        padding-inline: 2vw;
+        margin-left: 2%;
+        text-align: center;
+    }
+}
+
 </style>

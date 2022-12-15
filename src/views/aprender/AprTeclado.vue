@@ -93,71 +93,72 @@
 
         <section class="menu">
             <div style="font-size: 2.5em;">
-                <img id="ctrl" src="@/assets/aprender/ctrl.png" style="display: none;">
-                <img id="fixa" src="@/assets/aprender/fixa.png" style="display: none;">
-                <img id="shift" src="@/assets/aprender/shift.png" style="display: none;">
-                <img id="tec" src="@/assets/aprender/tec.png" style="display: none;">
-                <img id="tec_+" src="@/assets/aprender/tec_+.png" style="display: none;">
-                <img id="tec_-" src="@/assets/aprender/tec_-.png" style="display: none;">
-                <img id="tec_0" src="@/assets/aprender/tec_0.png" style="display: none;">
-                <img id="tec_1" src="@/assets/aprender/tec_1.png" style="display: none;">
-                <img id="tec_2" src="@/assets/aprender/tec_2.png" style="display: none;">
-                <img id="tec_3" src="@/assets/aprender/tec_3.png" style="display: none;">
-                <img id="tec_4" src="@/assets/aprender/tec_4.png" style="display: none;">
-                <img id="tec_5" src="@/assets/aprender/tec_5.png" style="display: none;">
-                <img id="tec_6" src="@/assets/aprender/tec_6.png" style="display: none;">
-                <img id="tec_7" src="@/assets/aprender/tec_7.png" style="display: none;">
-                <img id="tec_8" src="@/assets/aprender/tec_8.png" style="display: none;">
-                <img id="tec_9" src="@/assets/aprender/tec_9.png" style="display: none;">
-                <img id="tec_a" src="@/assets/aprender/tec_a.png" style="display: none;">
-                <img id="tec_alt" src="@/assets/aprender/tec_alt.png" style="display: none;">
-                <img id="tec_b" src="@/assets/aprender/tec_b.png" style="display: none;">
-                <img id="tec_back" src="@/assets/aprender/tec_back.png" style="display: none;">
-                <img id="tec_c" src="@/assets/aprender/tec_c.png" style="display: none;">
-                <img id="tec_cedilha" src="@/assets/aprender/tec_cedilha.png" style="display: none;">
-                <img id="tec_ctrl" src="@/assets/aprender/tec_ctrl.png" style="display: none;">
-                <img id="tec_d" src="@/assets/aprender/tec_d.png" style="display: none;">
-                <img id="tec_doispontos" src="@/assets/aprender/tec_doispontos.png" style="display: none;">
-                <img id="tec_e" src="@/assets/aprender/tec_e.png" style="display: none;">
-                <img id="tec_enter" src="@/assets/aprender/tec_enter.png" style="display: none;">
-                <img id="tec_f" src="@/assets/aprender/tec_f.png" style="display: none;">
-                <img id="tec_g" src="@/assets/aprender/tec_g.png" style="display: none;">
-                <img id="tec_h" src="@/assets/aprender/tec_h.png" style="display: none;">
-                <img id="tec_i" src="@/assets/aprender/tec_i.png" style="display: none;">
-                <img id="tec_interrog" src="@/assets/aprender/tec_interrog.png" style="display: none;">
-                <img id="tec_j" src="@/assets/aprender/tec_j.png" style="display: none;">
-                <img id="tec_k" src="@/assets/aprender/tec_k.png" style="display: none;">
-                <img id="tec_l" src="@/assets/aprender/tec_l.png" style="display: none;">
-                <img id="tec_m" src="@/assets/aprender/tec_m.png" style="display: none;">
-                <img id="tec_menu" src="@/assets/aprender/tec_menu.png" style="display: none;">
-                <img id="tec_n" src="@/assets/aprender/tec_n.png" style="display: none;">
-                <img id="tec_o" src="@/assets/aprender/tec_o.png" style="display: none;">
-                <img id="tec_p" src="@/assets/aprender/tec_p.png" style="display: none;">
-                <img id="tec_pipe" src="@/assets/aprender/tec_pipe.png" style="display: none;">
-                <img id="tec_ponto" src="@/assets/aprender/tec_ponto.png" style="display: none;">
-                <img id="tec_q" src="@/assets/aprender/tec_q.png" style="display: none;">
-                <img id="tec_r" src="@/assets/aprender/tec_r.png" style="display: none;">
-                <img id="tec_rightbrack" src="@/assets/aprender/tec_rightbrack.png" style="display: none;">
-                <img id="tec_s" src="@/assets/aprender/tec_s.png" style="display: none;">
-                <img id="tec_shift" src="@/assets/aprender/tec_shift.png" style="display: none;">
-                <img id="tec_space" src="@/assets/aprender/tec_space.png" style="display: none;">
-                <img id="tec_t" src="@/assets/aprender/tec_t.png" style="display: none;">
-                <img id="tec_tab" src="@/assets/aprender/tec_tab.png" style="display: none;">
-                <img id="tec_til" src="@/assets/aprender/tec_til.png" style="display: none;">
-                <img id="tec_u" src="@/assets/aprender/tec_u.png" style="display: none;">
-                <img id="tec_v" src="@/assets/aprender/tec_v.png" style="display: none;">
-                <img id="tec_virg" src="@/assets/aprender/tec_virg.png" style="display: none;">
-                <img id="tec_w" src="@/assets/aprender/tec_w.png" style="display: none;">
-                <img id="tec_win" src="@/assets/aprender/tec_win.png" style="display: none;">
-                <img id="tec_x" src="@/assets/aprender/tec_x.png" style="display: none;">
-                <img id="tec_y" src="@/assets/aprender/tec_y.png" style="display: none;">
-                <img id="tec_z" src="@/assets/aprender/tec_z.png" style="display: none;">
-                <img id="tec_[" src="@/assets/aprender/tec_[.png" style="display: none;">
-                <img id="tec__" src="@/assets/aprender/tec__.png" style="display: none;">
-                <img id="til_png" src="@/assets/aprender/til_png.png" style="display: none;">
+                <article>
+                    <img id="ctrl" src="@/assets/aprender/ctrl.png" style="display: none;">
+                    <img id="fixa" src="@/assets/aprender/fixa.png" style="display: none;">
+                    <img id="shift" src="@/assets/aprender/shift.png" style="display: none;">
+                    <img id="tec" src="@/assets/aprender/tec.png" style="display: none;">
+                    <img id="tec_+" src="@/assets/aprender/tec_+.png" style="display: none;">
+                    <img id="tec_-" src="@/assets/aprender/tec_-.png" style="display: none;">
+                    <img id="tec_0" src="@/assets/aprender/tec_0.png" style="display: none;">
+                    <img id="tec_1" src="@/assets/aprender/tec_1.png" style="display: none;">
+                    <img id="tec_2" src="@/assets/aprender/tec_2.png" style="display: none;">
+                    <img id="tec_3" src="@/assets/aprender/tec_3.png" style="display: none;">
+                    <img id="tec_4" src="@/assets/aprender/tec_4.png" style="display: none;">
+                    <img id="tec_5" src="@/assets/aprender/tec_5.png" style="display: none;">
+                    <img id="tec_6" src="@/assets/aprender/tec_6.png" style="display: none;">
+                    <img id="tec_7" src="@/assets/aprender/tec_7.png" style="display: none;">
+                    <img id="tec_8" src="@/assets/aprender/tec_8.png" style="display: none;">
+                    <img id="tec_9" src="@/assets/aprender/tec_9.png" style="display: none;">
+                    <img id="tec_a" src="@/assets/aprender/tec_a.png" style="display: none;">
+                    <img id="tec_alt" src="@/assets/aprender/tec_alt.png" style="display: none;">
+                    <img id="tec_b" src="@/assets/aprender/tec_b.png" style="display: none;">
+                    <img id="tec_back" src="@/assets/aprender/tec_back.png" style="display: none;">
+                    <img id="tec_c" src="@/assets/aprender/tec_c.png" style="display: none;">
+                    <img id="tec_cedilha" src="@/assets/aprender/tec_cedilha.png" style="display: none;">
+                    <img id="tec_ctrl" src="@/assets/aprender/tec_ctrl.png" style="display: none;">
+                    <img id="tec_d" src="@/assets/aprender/tec_d.png" style="display: none;">
+                    <img id="tec_doispontos" src="@/assets/aprender/tec_doispontos.png" style="display: none;">
+                    <img id="tec_e" src="@/assets/aprender/tec_e.png" style="display: none;">
+                    <img id="tec_enter" src="@/assets/aprender/tec_enter.png" style="display: none;">
+                    <img id="tec_f" src="@/assets/aprender/tec_f.png" style="display: none;">
+                    <img id="tec_g" src="@/assets/aprender/tec_g.png" style="display: none;">
+                    <img id="tec_h" src="@/assets/aprender/tec_h.png" style="display: none;">
+                    <img id="tec_i" src="@/assets/aprender/tec_i.png" style="display: none;">
+                    <img id="tec_interrog" src="@/assets/aprender/tec_interrog.png" style="display: none;">
+                    <img id="tec_j" src="@/assets/aprender/tec_j.png" style="display: none;">
+                    <img id="tec_k" src="@/assets/aprender/tec_k.png" style="display: none;">
+                    <img id="tec_l" src="@/assets/aprender/tec_l.png" style="display: none;">
+                    <img id="tec_m" src="@/assets/aprender/tec_m.png" style="display: none;">
+                    <img id="tec_menu" src="@/assets/aprender/tec_menu.png" style="display: none;">
+                    <img id="tec_n" src="@/assets/aprender/tec_n.png" style="display: none;">
+                    <img id="tec_o" src="@/assets/aprender/tec_o.png" style="display: none;">
+                    <img id="tec_p" src="@/assets/aprender/tec_p.png" style="display: none;">
+                    <img id="tec_pipe" src="@/assets/aprender/tec_pipe.png" style="display: none;">
+                    <img id="tec_ponto" src="@/assets/aprender/tec_ponto.png" style="display: none;">
+                    <img id="tec_q" src="@/assets/aprender/tec_q.png" style="display: none;">
+                    <img id="tec_r" src="@/assets/aprender/tec_r.png" style="display: none;">
+                    <img id="tec_rightbrack" src="@/assets/aprender/tec_rightbrack.png" style="display: none;">
+                    <img id="tec_s" src="@/assets/aprender/tec_s.png" style="display: none;">
+                    <img id="tec_shift" src="@/assets/aprender/tec_shift.png" style="display: none;">
+                    <img id="tec_space" src="@/assets/aprender/tec_space.png" style="display: none;">
+                    <img id="tec_t" src="@/assets/aprender/tec_t.png" style="display: none;">
+                    <img id="tec_tab" src="@/assets/aprender/tec_tab.png" style="display: none;">
+                    <img id="tec_til" src="@/assets/aprender/tec_til.png" style="display: none;">
+                    <img id="tec_u" src="@/assets/aprender/tec_u.png" style="display: none;">
+                    <img id="tec_v" src="@/assets/aprender/tec_v.png" style="display: none;">
+                    <img id="tec_virg" src="@/assets/aprender/tec_virg.png" style="display: none;">
+                    <img id="tec_w" src="@/assets/aprender/tec_w.png" style="display: none;">
+                    <img id="tec_win" src="@/assets/aprender/tec_win.png" style="display: none;">
+                    <img id="tec_x" src="@/assets/aprender/tec_x.png" style="display: none;">
+                    <img id="tec_y" src="@/assets/aprender/tec_y.png" style="display: none;">
+                    <img id="tec_z" src="@/assets/aprender/tec_z.png" style="display: none;">
+                    <img id="tec_[" src="@/assets/aprender/tec_[.png" style="display: none;">
+                    <img id="tec__" src="@/assets/aprender/tec__.png" style="display: none;">
+                    <img id="til_png" src="@/assets/aprender/til_png.png" style="display: none;">
+                </article>
 
-                <canvas style="display:none;padding-left: 4%;" id="trencherCanvas" height="400"
-                    width="1200"></canvas>
+                <canvas style="display:none;padding-left: 4%;" id="trencherCanvas" height="400" width="1200"></canvas>
                 <div class="textinho">
                     <p style="display: none;margin-top: -1vh;" id="frase1"></p>
                     <p id="frase2" style="display: none; z-index: 9;color: yellow;"></p>
@@ -456,13 +457,13 @@ dialog div:hover {
     cursor: pointer;
 }
 
-.textinho{
+.textinho {
     background: #002a9680;
     border-radius: 20px;
     min-height: 5vh;
     padding: 1%;
 
-    p{
+    p {
         margin: 0 auto;
     }
 }
