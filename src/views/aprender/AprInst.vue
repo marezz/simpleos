@@ -84,15 +84,15 @@
 
         <section class="lado">
             <span style="background-color: #0041e4de; color: white;">Navegando pelo SimpleOS</span>
-            <span>Customização</span>
-            <span>Como pesquisar</span>
-            <span>Enviando um email</span>
-            <span>Pedindo ajuda</span>
-            <span>Adicionando um site</span>
-            <span>Aprendendo a desenhar</span>
-            <span>Como pesquisar</span>
-            <span>Pedindo ajuda</span>
-            <span>Como pesquisar</span>
+            <span>🎨 Customização</span>
+            <span>🔍 Como pesquisar</span>
+            <span>✉️ Enviando um email</span>
+            <span>🆘 Pedindo ajuda</span>
+            <span>➕ Adicionando um site</span>
+            <span>✏️ Aprendendo a desenhar</span>
+            <span>📝 Salvando uma nota</span>
+            <span>🌐 Conectando na internet</span>
+            <span>⌨️ Digitando...</span>
         </section>
 
         <section class="menu">

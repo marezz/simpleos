@@ -42,9 +42,9 @@
             <span style="background-color: #970d0d; color: white;">Projeto Final</span>
             <span>Festa da Empresa</span>
             <span>Formatura</span>
-            <span>Convite</span>
+            <span>✉️ Convite</span>
             <span>Lembrete pro futuro</span>
-            <span>Você ganhou R$1000!</span>
+            <span>⚠️ Você ganhou R$1000!</span>
             <span>Boletim 3º Trimestre</span>
             <span>Vamo mengão</span>
             <span>Festa da Empresa</span>
