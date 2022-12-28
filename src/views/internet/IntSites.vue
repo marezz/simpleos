@@ -1,9 +1,5 @@
 <template>
     <div>
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,700,0,0" />
         <h1 style="margin-top:-10vh;">Navegar a Internet</h1>
 
         <svg class="fundo" style="height: 364px;left: -5vh;bottom:-10vh;width: 65%" width="1020" height="376"
@@ -71,19 +67,19 @@
             <h2>Adicionar Site</h2>
             <form @submit.prevent="newIcon($event)">
                 <input type="url" placeholder="https://exemplo.com.br" v-model="form.url" />
-                <link rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
-                <button type="submit" class="material-symbols-outlined"
-                    style="margin: 10px; font-size: 2em; font-weight: bold;">
-                    done
-                </button>
             </form>
         </dialog>
 
         <section class="menu">
             <br />
             <ul>
-                <template v-for="block in blocks" :key="block">
+                <template v-for="(block, index) in blocks" :key="block">
+                    <div class="close">
+                        <button @click="removeIcon(index)" class="material-symbols-outlined"
+                            style="margin: 10px; font-size: 1em; font-weight: bold;">
+                            close
+                        </button>
+                    </div>
                     <a v-bind:href="block.link" target="_blank" class="link">
                         <li>
                             <img v-bind:src="block.icon" style="width:64px" />
@@ -131,6 +127,9 @@ export default {
             var addIcon = "https://s2.googleusercontent.com/s2/favicons?domain=" + this.form.url
             this.blocks.push({ link: this.form.url, icon: addIcon })
             document.querySelector("dialog").close()
+        },
+        removeIcon(index) {
+            this.blocks.splice(index, 1)
         }
     },
     mounted() {
