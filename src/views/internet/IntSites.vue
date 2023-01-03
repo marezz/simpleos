@@ -1,5 +1,9 @@
 <template>
     <div>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,700,0,0" />
         <h1 style="margin-top:-10vh;">Navegar a Internet</h1>
 
         <svg class="fundo" style="height: 364px;left: -5vh;bottom:-10vh;width: 65%" width="1020" height="376"
@@ -67,6 +71,9 @@
             <h2>Adicionar Site</h2>
             <form @submit.prevent="newIcon($event)">
                 <input type="url" placeholder="https://exemplo.com.br" v-model="form.url" />
+                <button type="submit" class="material-symbols-outlined" style="margin: 10px; font-size: 2em; font-weight: bold;">
+                    done
+                </button>
             </form>
         </dialog>
 
@@ -127,12 +134,24 @@ export default {
             var addIcon = "https://s2.googleusercontent.com/s2/favicons?domain=" + this.form.url
             this.blocks.push({ link: this.form.url, icon: addIcon })
             document.querySelector("dialog").close()
+            localStorage.setItem("blocks",JSON.stringify(this.blocks))
         },
         removeIcon(index) {
             this.blocks.splice(index, 1)
+            localStorage.setItem("blocks",JSON.stringify(this.blocks))
         }
     },
+    /*watch:{
+        blocks(content){
+            console.log("Updated notes")
+            localStorage.blocks = JSON.stringify(content)
+        }
+    },*/
     mounted() {
+        /*if(localStorage.blocks){
+            this.blocks = JSON.parse(localStorage.blocks)
+        }*/
+        this.blocks = JSON.parse(localStorage.getItem("blocks")) || this.blocks
         document.getElementById("add").onclick = function () {
             document.querySelector("dialog").showModal()
         }
