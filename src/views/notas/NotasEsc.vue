@@ -221,6 +221,19 @@ export default {
             this.notes.splice(index, 1)
         }
     },
+    mounted(){
+        if(localStorage.getItem("notes")){
+            this.notes = JSON.parse(localStorage.getItem("notes"))
+        }
+    },
+    watch:{
+        notes:{
+            handler(newNotes){
+                localStorage.setItem("notes",JSON.stringify(newNotes))
+            },
+            deep: true
+        }
+    },
     created() {
         document.getElementById("geral").href = "../geral.css";
         document.getElementById("meucss").href = "../bckg/notas.css";
