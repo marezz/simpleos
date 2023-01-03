@@ -228,8 +228,8 @@ export default {
     },
     watch:{
         notes:{
-            handler(newNotes){
-                localStorage.setItem("notes",JSON.stringify(newNotes))
+            handler(content){
+                localStorage.setItem("notes",JSON.stringify(content))
             },
             deep: true
         }
