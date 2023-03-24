@@ -71,7 +71,8 @@
             <h2>Adicionar Site</h2>
             <form @submit.prevent="newIcon($event)">
                 <input type="url" placeholder="https://exemplo.com.br" v-model="form.url" />
-                <button type="submit" class="material-symbols-outlined" style="margin: 10px; font-size: 2em; font-weight: bold;">
+                <button type="submit" class="material-symbols-outlined"
+                    style="margin: 10px; font-size: 2em; font-weight: bold;">
                     done
                 </button>
             </form>
@@ -81,14 +82,14 @@
             <br />
             <ul>
                 <template v-for="(block, index) in blocks" :key="block">
-                    <div class="close">
-                        <button @click="removeIcon(index)" class="material-symbols-outlined"
-                            style="margin: 10px; font-size: 1em; font-weight: bold;">
-                            close
-                        </button>
-                    </div>
                     <a v-bind:href="block.link" target="_blank" class="link">
                         <li>
+                            <div class="close">
+                                <button @click="removeIcon(index)" class="material-symbols-outlined"
+                                    style="margin: 10px; font-size: 1em; font-weight: bold;">
+                                    close
+                                </button>
+                            </div>
                             <img v-bind:src="block.icon" style="width:64px" />
                         </li>
                     </a>
@@ -105,7 +106,6 @@
             </div>
         </router-link>
     </div>
-
 </template>
 
 <script>
@@ -114,7 +114,7 @@ export default {
     data() {
         return {
             blocks: [
-                { link: "https://fb.com", icon: "https://cdn.exclaimer.com/Handbook%20Images/facebook-icon_64x64.png" },
+                { link: "https://facebook.com", icon: "https://cdn.exclaimer.com/Handbook%20Images/facebook-icon_64x64.png" },
                 { link: "https://instagram.com", icon: "https://cdn-icons-png.flaticon.com/64/2111/2111463.png" },
                 { link: "https://twitter.com", icon: "https://cdn.exclaimer.com/Handbook%20Images/twitter-icon_64x64.png" },
                 { link: "https://web.whatsapp.com", icon: "https://cdn.exclaimer.com/Handbook%20Images/whatsapp_64.png" },
@@ -134,11 +134,11 @@ export default {
             var addIcon = "https://s2.googleusercontent.com/s2/favicons?domain=" + this.form.url
             this.blocks.push({ link: this.form.url, icon: addIcon })
             document.querySelector("dialog").close()
-            localStorage.setItem("blocks",JSON.stringify(this.blocks))
+            localStorage.setItem("blocks", JSON.stringify(this.blocks))
         },
         removeIcon(index) {
             this.blocks.splice(index, 1)
-            localStorage.setItem("blocks",JSON.stringify(this.blocks))
+            localStorage.setItem("blocks", JSON.stringify(this.blocks))
         }
     },
     /*watch:{
@@ -205,6 +205,8 @@ ul {
     column-gap: 5%;
     row-gap: 5vh;
     min-width: 50vw;
+    position: relative;
+    z-index: 1;
 }
 
 li {
@@ -214,10 +216,13 @@ li {
     padding: 5vh;
     background-color: white;
     border-radius: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 li img {
-    margin: 0 auto;
+    margin: -3vh auto;
+    padding: 0;
     border: 0;
 }
 
@@ -267,5 +272,25 @@ dialog {
 
 dialog div:hover {
     cursor: pointer;
+}
+
+.close {
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 3;
+    border: none;
+    background: transparent;
+    top: -5vh;
+    left: -5vh;
+    bottom: 0;
+    max-width: 50px;
+    max-height: 50px;
+    
+    &:hover{
+        box-shadow: none;
+        
+        color: white !important;
+    }
+
 }
 </style>
