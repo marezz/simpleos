@@ -1,4 +1,3 @@
-````markdown
 # SimpleOS 🌟
 
 > *Uma jornada encantadora à descoberta da tecnologia – simples, colorida e humana.*
