@@ -1,7 +1,5 @@
 # SimpleOS 🌟
-
-> *Uma jornada encantadora à descoberta da tecnologia – simples, colorida e humana.*
-
+> “A simplicidade é o mais alto grau de sofisticação” - Leonardo da Vinci
 ---
 
 ## ✨ Propósito
@@ -75,6 +73,3 @@ npm run serve      # abre em http://localhost:8080
 Clique na imagem abaixo para assistir ao vídeo demonstrativo:
 
 [![Assista ao vídeo de apresentação do SimpleOS](https://img.youtube.com/vi/xwmvwJCQXuI/hqdefault.jpg)](https://youtu.be/xwmvwJCQXuI)
-
-
-> “A simplicidade é o mais alto grau de sofisticação” - Leonardo da Vinci
